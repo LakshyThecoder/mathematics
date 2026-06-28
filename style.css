@@ -522,3 +522,93 @@ mjx-container { overflow-x: auto; max-width: 100%; display: inline-block; }
   table { font-size: .78rem; }
   th, td { padding: 7px 9px; }
 }
+
+
+/* ═══════════════════════════════════════════
+   TEACHING / FIRST-TIME-LEARNER COMPONENTS
+═══════════════════════════════════════════ */
+.lead {
+  font-size: 1rem; color: var(--text2);
+  line-height: 1.85; margin-bottom: 16px;
+}
+.lead strong { color: var(--text); }
+
+/* "What is this?" intro banner */
+.intro {
+  background: linear-gradient(135deg, rgba(88,166,255,.08), rgba(210,168,255,.06));
+  border: 1px solid var(--border2);
+  border-radius: 10px; padding: 16px 18px; margin: 14px 0 20px;
+}
+.intro h3 { margin-top: 0; color: var(--blue); }
+.intro p:last-child { margin-bottom: 0; }
+
+/* Numbered learning blocks */
+.lesson {
+  background: var(--surf); border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 20px; margin: 14px 0;
+}
+.lesson-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 26px; height: 26px; border-radius: 7px;
+  background: rgba(88,166,255,.15); color: var(--blue);
+  font-weight: 700; font-size: .8rem; margin-right: 9px;
+}
+.lesson-title {
+  display: flex; align-items: center; font-size: 1rem;
+  font-weight: 600; color: var(--text); margin-bottom: 10px;
+}
+
+/* "Think of it like..." analogy box */
+.analogy {
+  background: rgba(210,168,255,.07);
+  border: 1px solid rgba(210,168,255,.28);
+  border-radius: 8px; padding: 12px 15px; margin: 11px 0;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.analogy .bi { color: var(--purple); }
+.analogy .bc strong { color: var(--purple); }
+
+/* "Why does this work?" box */
+.why {
+  background: rgba(88,166,255,.06);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 10px 0;
+  font-size: .88rem; color: var(--text2);
+}
+.why strong { color: var(--blue); }
+.why > strong:first-child { display: block; margin-bottom: 2px; }
+
+/* "In plain words" restatement */
+.plain {
+  background: rgba(63,185,80,.06);
+  border-left: 3px solid var(--green);
+  border-radius: 0 6px 6px 0; padding: 10px 14px; margin: 10px 0;
+  font-size: .88rem; color: var(--text2);
+}
+.plain strong { color: var(--green); }
+.plain > strong:first-child { display: block; margin-bottom: 2px; }
+
+/* Worked example container */
+.worked {
+  background: #12161d; border: 1px dashed var(--border2);
+  border-radius: 10px; padding: 14px 18px; margin: 14px 0;
+}
+.worked-tag {
+  display: inline-block; font-size: .66rem; font-weight: 700;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: var(--orange); background: rgba(255,166,87,.12);
+  padding: 3px 9px; border-radius: 5px; margin-bottom: 10px;
+}
+
+/* Key term highlight */
+.term { color: var(--purple); font-weight: 600; }
+.ans  { color: var(--green); font-weight: 700; }
+
+/* Mini divider with label */
+.sec-label {
+  display: flex; align-items: center; gap: 10px;
+  margin: 26px 0 12px; color: var(--muted);
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
