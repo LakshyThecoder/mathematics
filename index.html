@@ -35,6 +35,7 @@ window.MathJax = {
     <button class="nav-btn" onclick="showPage('exB',this)">Exercise B</button>
     <button class="nav-btn" onclick="showPage('exams',this)">Past Exams</button>
     <button class="nav-btn" onclick="showPage('cs',this)">Cheat Sheet</button>
+    <button class="nav-btn" onclick="showPage('glossary',this)">Glossary</button>
   </div>
 </nav>
 <div id="sidebar-overlay" onclick="toggleSidebar()"></div>
@@ -56,6 +57,7 @@ window.MathJax = {
 <div class="sb-section"><div class="sb-head">Resources</div>
 <div class="sb-link" onclick="showPage('exams',null)"><span class="badge bo">&#x1F4C4;</span>Past Exams</div>
 <div class="sb-link" onclick="showPage('cs',null)"><span class="badge br">&#x26A1;</span>Cheat Sheet</div>
+<div class="sb-link" onclick="showPage('glossary',null)"><span class="badge bb">&#x1F4D6;</span>Glossary</div>
 </div>
 </aside>
 <main id="main">
@@ -1010,6 +1012,126 @@ $$f''=(-8)e^{-4x^2}+(-8x)(-8x\,e^{-4x^2})=-8e^{-4x^2}+64x^2e^{-4x^2}$$</div></di
 <tr><td>72&ndash;75 min</td><td>Review: every CP classified? Asymptotes drawn? $\tfrac12$ in Taylor?</td></tr>
 </tbody></table></div>
 <div class="tip"><div class="bi">&#x1F4A1;</div><div class="bc"><strong>Partial credit is real</strong>Even if the arithmetic slips, showing the correct method earns marks. Never leave a step blank &mdash; write the rule you'd use.</div></div>
+</section>
+<section class="page math-content" id="page-glossary">
+<div class="page-meta"><span class="page-tag tag-blue">Reference</span></div>
+<h1>&#x1F4D6; Glossary &mdash; Notation &amp; Terms</h1>
+<p class="lead">Confused by a symbol like $f_{xx}$ or $\nabla f$? Look it up here. Every piece of notation and every key word used across this site is explained in plain English, with examples.</p>
+<input class="gloss-search" type="text" placeholder="&#x1F50D;  Search e.g. “fxx”, “determinant”, “saddle”…" oninput="glossFilter(this.value)" />
+<div class="gloss-group">
+<h2>Derivative notation (one variable)</h2>
+<div class="table-wrap"><table><thead><tr><th>Symbol / Term</th><th>Reads as</th><th>What it means</th></tr></thead><tbody>
+<tr data-k="f' f prime first derivative slope rate of change"><td class="gsym">$f'(x)$</td><td class="gname"><span style="color:var(--muted);font-style:italic">f prime of x</span></td><td><strong>First derivative</strong> &mdash; the slope of the curve / how fast $f$ changes.</td></tr>
+<tr data-k="f'' f double prime second derivative concavity bend curvature"><td class="gsym">$f''(x)$</td><td class="gname"><span style="color:var(--muted);font-style:italic">f double-prime of x</span></td><td><strong>Second derivative</strong> &mdash; the derivative of the derivative. Tells you how the slope changes, i.e. how the curve bends (concavity).</td></tr>
+<tr data-k="d/dx d by dx differentiate operator leibniz"><td class="gsym">$\dfrac{d}{dx}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">d by d x</span></td><td>The <strong>differentiate</strong> instruction: “take the derivative with respect to $x$”.</td></tr>
+<tr data-k="dy/dx leibniz derivative of y"><td class="gsym">$\dfrac{dy}{dx}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">d y by d x</span></td><td>Derivative of $y$ with respect to $x$ (Leibniz notation &mdash; same thing as $y'$).</td></tr>
+<tr data-k="f'(x0) evaluate derivative at a point x naught"><td class="gsym">$f'(x_0)$</td><td class="gname"><span style="color:var(--muted);font-style:italic">f prime at x-naught</span></td><td>The derivative <strong>evaluated at the point</strong> $x_0$ (the slope right there).</td></tr>
+</tbody></table></div>
+</div>
+<div class="gloss-group">
+<h2>Partial derivatives &amp; the Hessian (two variables)</h2>
+<div class="card card-blue"><h3>How to read the subscripts (this is the key!)</h3><p>With a function of two variables $f(x,y)$, a <strong>subscript tells you which variable you differentiated by</strong>, in order, left to right:</p><ul style="margin-bottom:0"><li>$f_x$ = differentiate once with respect to $x$ (treat $y$ as a frozen constant).</li><li>$f_{xx}$ = differentiate with respect to $x$, then <strong>again</strong> with respect to $x$ &mdash; the “second derivative in $x$”.</li><li>$f_{yy}$ = differentiate twice with respect to $y$.</li><li>$f_{xy}$ = differentiate by $x$ <strong>first</strong>, then by $y$ (the “mixed” partial). For our functions $f_{xy}=f_{yx}$.</li></ul></div>
+<div class="table-wrap"><table><thead><tr><th>Symbol / Term</th><th>Reads as</th><th>What it means</th></tr></thead><tbody>
+<tr data-k="fx f sub x partial derivative del dou df/dx with respect to x"><td class="gsym">$f_x,\ \dfrac{\partial f}{\partial x}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">f sub x / del f del x</span></td><td><strong>Partial derivative</strong> w.r.t. $x$: how $f$ changes as you move $x$, holding $y$ still.</td></tr>
+<tr data-k="fy f sub y partial derivative del with respect to y"><td class="gsym">$f_y,\ \dfrac{\partial f}{\partial y}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">f sub y / del f del y</span></td><td>Partial derivative w.r.t. $y$ (hold $x$ still).</td></tr>
+<tr data-k="fxx f xx second partial derivative twice x"><td class="gsym">$f_{xx}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">f sub x x</span></td><td><strong>Second partial</strong> &mdash; differentiate twice by $x$. (Top-left of the Hessian.)</td></tr>
+<tr data-k="fyy f yy second partial derivative twice y"><td class="gsym">$f_{yy}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">f sub y y</span></td><td>Second partial &mdash; differentiate twice by $y$. (Bottom-right of the Hessian.)</td></tr>
+<tr data-k="fxy f xy mixed partial derivative cross term off diagonal"><td class="gsym">$f_{xy}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">f sub x y</span></td><td><strong>Mixed partial</strong> &mdash; differentiate by $x$ then by $y$. (Off-diagonal of the Hessian; $=0$ when there's no $xy$ term.)</td></tr>
+<tr data-k="gradient grad nabla del f vector first partials"><td class="gsym">$\nabla f$</td><td class="gname"><span style="color:var(--muted);font-style:italic">grad f / nabla f</span></td><td>The <strong>gradient</strong>: the vector of first partials $(f_x, f_y)$. Zero at every critical point.</td></tr>
+<tr data-k="H hessian matrix second partials classify"><td class="gsym">$H$</td><td class="gname"><span style="color:var(--muted);font-style:italic">the Hessian</span></td><td>The <strong>Hessian matrix</strong> of second partials $\begin{psmallmatrix}f_{xx}&f_{xy}\\f_{xy}&f_{yy}\end{psmallmatrix}$ &mdash; used to classify min / max / saddle.</td></tr>
+</tbody></table></div>
+</div>
+<div class="gloss-group">
+<h2>Matrices &amp; linear algebra</h2>
+<div class="table-wrap"><table><thead><tr><th>Symbol / Term</th><th>Reads as</th><th>What it means</th></tr></thead><tbody>
+<tr data-k="Mij entry row column index element"><td class="gsym">$M_{ij}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">M sub i j</span></td><td>The entry in <strong>row $i$, column $j$</strong> of matrix $M$. (Row first, then column.)</td></tr>
+<tr data-k="det determinant |M| singular invertible"><td class="gsym">$\det(M),\ |M|$</td><td class="gname"><span style="color:var(--muted);font-style:italic">determinant of M</span></td><td><strong>Determinant</strong> &mdash; one number summarising a square matrix. $=0$ means singular.</td></tr>
+<tr data-k="tr trace diagonal sum"><td class="gsym">$\operatorname{tr}(M)$</td><td class="gname"><span style="color:var(--muted);font-style:italic">trace of M</span></td><td><strong>Trace</strong> &mdash; the sum of the diagonal entries. Also equals the sum of eigenvalues.</td></tr>
+<tr data-k="lambda eigenvalue eigen value"><td class="gsym">$\lambda$</td><td class="gname"><span style="color:var(--muted);font-style:italic">lambda</span></td><td>An <strong>eigenvalue</strong> &mdash; a special scalar attached to a matrix (here, of the Hessian).</td></tr>
+<tr data-k="transpose M^T flip rows columns"><td class="gsym">$M^{T}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">M transpose</span></td><td><strong>Transpose</strong> &mdash; flip rows and columns.</td></tr>
+<tr data-k="I identity matrix"><td class="gsym">$I$</td><td class="gname"><span style="color:var(--muted);font-style:italic">the identity</span></td><td>The <strong>identity matrix</strong> (1's on the diagonal, 0's elsewhere). Acts like “1”.</td></tr>
+<tr data-k="m x n size dimensions rows columns order"><td class="gsym">$(m\times n)$</td><td class="gname"><span style="color:var(--muted);font-style:italic">m by n</span></td><td>The <strong>size</strong> of a matrix: $m$ rows by $n$ columns.</td></tr>
+</tbody></table></div>
+</div>
+<div class="gloss-group">
+<h2>Sets, intervals &amp; domains</h2>
+<div class="table-wrap"><table><thead><tr><th>Symbol / Term</th><th>Reads as</th><th>What it means</th></tr></thead><tbody>
+<tr data-k="Df domain dom inputs allowed"><td class="gsym">$D_f$</td><td class="gname"><span style="color:var(--muted);font-style:italic">domain of f</span></td><td>The <strong>domain</strong> &mdash; every input the function is allowed to take.</td></tr>
+<tr data-k="R reals real numbers number line"><td class="gsym">$\mathbb{R}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">the reals</span></td><td>All <strong>real numbers</strong> (the whole number line).</td></tr>
+<tr data-k="R2 R^2 plane pairs two variables"><td class="gsym">$\mathbb{R}^2$</td><td class="gname"><span style="color:var(--muted);font-style:italic">R two</span></td><td>The <strong>plane</strong> &mdash; all pairs $(x,y)$.</td></tr>
+<tr data-k="in element of not in member belongs"><td class="gsym">$\in,\ \notin$</td><td class="gname"><span style="color:var(--muted);font-style:italic">is in / not in</span></td><td>“<strong>is an element of</strong>” / “is not an element of” a set.</td></tr>
+<tr data-k="setminus backslash exclude remove except"><td class="gsym">$\setminus$</td><td class="gname"><span style="color:var(--muted);font-style:italic">set minus</span></td><td><strong>Exclude</strong> these values, e.g. $\mathbb{R}\setminus\{0\}$ = all reals except $0$.</td></tr>
+<tr data-k="union cup intersection cap combine overlap"><td class="gsym">$\cup,\ \cap$</td><td class="gname"><span style="color:var(--muted);font-style:italic">union / intersection</span></td><td><strong>Union</strong> (combine) and <strong>intersection</strong> (overlap) of sets.</td></tr>
+<tr data-k="open interval parentheses endpoints excluded"><td class="gsym">$(a,b)$</td><td class="gname"><span style="color:var(--muted);font-style:italic">open interval</span></td><td><strong>Open</strong> interval &mdash; endpoints <em>excluded</em>.</td></tr>
+<tr data-k="closed interval brackets endpoints included"><td class="gsym">$[a,b]$</td><td class="gname"><span style="color:var(--muted);font-style:italic">closed interval</span></td><td><strong>Closed</strong> interval &mdash; endpoints <em>included</em>.</td></tr>
+<tr data-k="infinity infinite unbounded"><td class="gsym">$\infty$</td><td class="gname"><span style="color:var(--muted);font-style:italic">infinity</span></td><td><strong>Infinity</strong> &mdash; grows without bound (not an actual number).</td></tr>
+</tbody></table></div>
+</div>
+<div class="gloss-group">
+<h2>Limits</h2>
+<div class="table-wrap"><table><thead><tr><th>Symbol / Term</th><th>Reads as</th><th>What it means</th></tr></thead><tbody>
+<tr data-k="lim limit approaches tends"><td class="gsym">$\lim$</td><td class="gname"><span style="color:var(--muted);font-style:italic">limit</span></td><td>The <strong>value a function heads toward</strong> as the input approaches something.</td></tr>
+<tr data-k="x to a+ right hand limit from above"><td class="gsym">$x\to a^{+}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">x tends to a from the right</span></td><td>Approaching $a$ from the <strong>right</strong> (values just above $a$).</td></tr>
+<tr data-k="x to a- left hand limit from below"><td class="gsym">$x\to a^{-}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">x tends to a from the left</span></td><td>Approaching $a$ from the <strong>left</strong> (values just below $a$).</td></tr>
+<tr data-k="arrow tends to approaches goes to"><td class="gsym">$\to$</td><td class="gname"><span style="color:var(--muted);font-style:italic">tends to / approaches</span></td><td>“<strong>approaches</strong>” or “goes to”.</td></tr>
+<tr data-k="0/0 infinity over indeterminate form lhopital lhospital stuck"><td class="gsym">$\tfrac{0}{0},\ \tfrac{\infty}{\infty}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">indeterminate forms</span></td><td><strong>Indeterminate forms</strong> &mdash; “stuck” limits; use <strong>L'Hôpital's rule</strong> (differentiate top and bottom).</td></tr>
+</tbody></table></div>
+</div>
+<div class="gloss-group">
+<h2>Logarithms &amp; exponentials</h2>
+<div class="table-wrap"><table><thead><tr><th>Symbol / Term</th><th>Reads as</th><th>What it means</th></tr></thead><tbody>
+<tr data-k="ln natural log base e"><td class="gsym">$\ln x$</td><td class="gname"><span style="color:var(--muted);font-style:italic">natural log of x</span></td><td><strong>Natural logarithm</strong> (base $e$). Inverse of $e^x$.</td></tr>
+<tr data-k="log logarithm base 10"><td class="gsym">$\log x$</td><td class="gname"><span style="color:var(--muted);font-style:italic">log of x</span></td><td><strong>Logarithm</strong> (base $10$ in this course). Inverse of $10^x$.</td></tr>
+<tr data-k="e^x exp exponential function"><td class="gsym">$e^{x}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">e to the x / exp x</span></td><td>The <strong>exponential function</strong>. Always positive; grows very fast.</td></tr>
+<tr data-k="e euler number 2.718 constant base"><td class="gsym">$e$</td><td class="gname"><span style="color:var(--muted);font-style:italic">Euler’s number</span></td><td>The constant $e\approx 2.718$ &mdash; the base of natural logs.</td></tr>
+</tbody></table></div>
+</div>
+<div class="gloss-group">
+<h2>Key concept words</h2>
+<div class="table-wrap"><table><thead><tr><th>Symbol / Term</th><th>Reads as</th><th>What it means</th></tr></thead><tbody>
+<tr data-k="critical stationary point flat slope zero gradient candidate"><td class="gsym">Critical / stationary point</td><td class="gname"></td><td>A point where the slope is flat: $f'=0$ (or the gradient $=0$ in 2D). A candidate for a min, max, or saddle.</td></tr>
+<tr data-k="local minimum maximum min max valley peak hilltop extremum extrema"><td class="gsym">Local minimum / maximum</td><td class="gname"></td><td>A <strong>valley bottom</strong> (min) or <strong>hilltop</strong> (max) compared to nearby points.</td></tr>
+<tr data-k="saddle point mountain pass det negative"><td class="gsym">Saddle point</td><td class="gname"></td><td>A flat point that is a min in one direction and a max in another (like a mountain pass). Happens when $\det H<0$.</td></tr>
+<tr data-k="inflection point concavity change bend switches"><td class="gsym">Inflection point</td><td class="gname"></td><td>Where the curve <strong>changes concavity</strong> (bowl &harr; arch); $f''$ changes sign.</td></tr>
+<tr data-k="concave up down convex bowl arch concavity"><td class="gsym">Concave up / down</td><td class="gname"></td><td><strong>Up</strong> = bowl-shaped ($f''>0$); <strong>down</strong> = arch-shaped ($f''<0$).</td></tr>
+<tr data-k="asymptote vertical horizontal oblique slant line approaches"><td class="gsym">Asymptote</td><td class="gname"></td><td>A line the curve gets ever closer to: <strong>vertical</strong> (a wall), <strong>horizontal</strong> (a floor/ceiling), or <strong>oblique</strong> (slanted).</td></tr>
+<tr data-k="monotonic increasing decreasing strictly"><td class="gsym">Monotonic</td><td class="gname"></td><td><strong>Always increasing</strong> or <strong>always decreasing</strong> (never turns around).</td></tr>
+<tr data-k="taylor expansion series approximation quadratic"><td class="gsym">Taylor expansion</td><td class="gname"></td><td>A polynomial that <strong>approximates</strong> a function near a point; the 2nd-order one captures the local curved shape.</td></tr>
+</tbody></table></div>
+</div>
+<div class="gloss-group">
+<h2>Common symbols</h2>
+<div class="table-wrap"><table><thead><tr><th>Symbol / Term</th><th>Reads as</th><th>What it means</th></tr></thead><tbody>
+<tr data-k="plus minus pm two cases"><td class="gsym">$\pm$</td><td class="gname"><span style="color:var(--muted);font-style:italic">plus or minus</span></td><td>Both the $+$ and the $-$ case (e.g. two roots $\pm\sqrt5$).</td></tr>
+<tr data-k="approximately equal approx roughly about"><td class="gsym">$\approx$</td><td class="gname"><span style="color:var(--muted);font-style:italic">approximately equal</span></td><td><strong>Roughly equal</strong> to.</td></tr>
+<tr data-k="not equal neq"><td class="gsym">$\neq$</td><td class="gname"><span style="color:var(--muted);font-style:italic">not equal</span></td><td><strong>Not equal</strong> to.</td></tr>
+<tr data-k="less than or equal greater than or equal leq geq"><td class="gsym">$\leq,\ \geq$</td><td class="gname"><span style="color:var(--muted);font-style:italic">less/greater or equal</span></td><td>Less-than-or-equal / greater-than-or-equal.</td></tr>
+<tr data-k="square root sqrt radical"><td class="gsym">$\sqrt{\;}$</td><td class="gname"><span style="color:var(--muted);font-style:italic">square root</span></td><td><strong>Square root</strong> &mdash; needs its inside $\geq 0$.</td></tr>
+<tr data-k="sum sigma summation total"><td class="gsym">$\sum$</td><td class="gname"><span style="color:var(--muted);font-style:italic">sigma / sum</span></td><td><strong>Sum</strong> of a list of terms.</td></tr>
+<tr data-k="much less than grows slower growth hierarchy"><td class="gsym">$\ll$</td><td class="gname"><span style="color:var(--muted);font-style:italic">much less than</span></td><td><strong>Grows much slower than</strong> (used in the growth hierarchy $\log x\ll x^n\ll e^x$).</td></tr>
+</tbody></table></div>
+</div>
+<div class="gloss-noresult" id="gloss-noresult">No matches &mdash; try a different word.</div>
+<script>
+function glossFilter(q){
+  q=(q||'').trim().toLowerCase();
+  var groups=document.querySelectorAll('#page-glossary .gloss-group');
+  var anyVisible=false;
+  groups.forEach(function(g){
+    var shown=false;
+    g.querySelectorAll('tbody tr').forEach(function(tr){
+      var k=(tr.getAttribute('data-k')||'').toLowerCase();
+      var ok=!q||k.indexOf(q)>=0;
+      tr.style.display=ok?'':'none';
+      if(ok)shown=true;
+    });
+    g.style.display=shown?'':'none';
+    if(shown)anyVisible=true;
+  });
+  var nr=document.getElementById('gloss-noresult');
+  if(nr)nr.style.display=anyVisible?'none':'block';
+}
+</script>
 </section>
 </main>
 <script>
