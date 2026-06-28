@@ -3,687 +3,711 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ECON Math - Complete Exam Notes</title>
+<title>ECON Math — Complete Exam Notes</title>
 <link rel="stylesheet" href="style.css"/>
-<script>MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["$$","$$"]],tags:"ams"}};</script>
-<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script>
+window.MathJax = {
+  tex: { inlineMath:[['$','$'],['\\(','\\)']], displayMath:[['$$','$$'],['\\[','\\]']], processEscapes:true },
+  options: { skipHtmlTags:['script','noscript','style','textarea','pre'], processHtmlClass:'math-content' },
+  startup: { typeset: false }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
 <nav id="topnav">
-<button id="hbg" onclick="document.getElementById('sb').classList.toggle('open')">&#9776;</button>
-<div class="logo">&#x1F4D0; ECON Math</div>
-<button class="nav-btn active" onclick="showPage('home',this)">Home</button>
-<button class="nav-btn" onclick="showPage('q1',this)">Q1 Matrices</button>
-<button class="nav-btn" onclick="showPage('q2',this)">Q2 Log/Exp</button>
-<button class="nav-btn" onclick="showPage('q3',this)">Q3 Domain</button>
-<button class="nav-btn" onclick="showPage('q4',this)">Q4 Derivatives</button>
-<button class="nav-btn" onclick="showPage('q5',this)">Q5 2nd Deriv</button>
-<button class="nav-btn" onclick="showPage('q6',this)">Q6 Det/Trace</button>
-<button class="nav-btn" onclick="showPage('q7',this)">Q7 Min/Max</button>
-<button class="nav-btn" onclick="showPage('q8',this)">Q8 Eigenvals</button>
-<button class="nav-btn" onclick="showPage('exA',this)">Exercise A</button>
-<button class="nav-btn" onclick="showPage('exB',this)">Exercise B</button>
-<button class="nav-btn" onclick="showPage('exams',this)">Past Exams</button>
-<button class="nav-btn" onclick="showPage('cs',this)">Cheat Sheet</button>
+  <button id="hbg" onclick="toggleSidebar()" aria-label="Menu">&#9776;</button>
+  <span class="logo">&#x1F4D0; ECON Math</span>
+  <span class="logo-sep"></span>
+  <div class="nav-scroll">
+    <button class="nav-btn active" onclick="showPage('home',this)">Home</button>
+    <button class="nav-btn" onclick="showPage('q1',this)">Q1 Matrices</button>
+    <button class="nav-btn" onclick="showPage('q2',this)">Q2 Log/Exp</button>
+    <button class="nav-btn" onclick="showPage('q3',this)">Q3 Domain</button>
+    <button class="nav-btn" onclick="showPage('q4',this)">Q4 Derivatives</button>
+    <button class="nav-btn" onclick="showPage('q5',this)">Q5 2nd Deriv</button>
+    <button class="nav-btn" onclick="showPage('q6',this)">Q6 Det/Trace</button>
+    <button class="nav-btn" onclick="showPage('q7',this)">Q7 Min/Max</button>
+    <button class="nav-btn" onclick="showPage('q8',this)">Q8 Eigenvals</button>
+    <button class="nav-btn" onclick="showPage('exA',this)">Exercise A</button>
+    <button class="nav-btn" onclick="showPage('exB',this)">Exercise B</button>
+    <button class="nav-btn" onclick="showPage('exams',this)">Past Exams</button>
+    <button class="nav-btn" onclick="showPage('cs',this)">Cheat Sheet</button>
+  </div>
 </nav>
-<aside id="sb">
-<div class="sh">Quick Questions</div>
-<span class="sl" onclick="showPage('q1',null)">Q1 Matrices</span>
-<span class="sl" onclick="showPage('q2',null)">Q2 Log/Exp</span>
-<span class="sl" onclick="showPage('q3',null)">Q3 Domain</span>
-<span class="sl" onclick="showPage('q4',null)">Q4 Derivatives</span>
-<span class="sl" onclick="showPage('q5',null)">Q5 2nd Deriv</span>
-<span class="sl" onclick="showPage('q6',null)">Q6 Det/Trace</span>
-<span class="sl" onclick="showPage('q7',null)">Q7 Min/Max</span>
-<span class="sl" onclick="showPage('q8',null)">Q8 Eigenvals</span>
-<div class="sh">Long Exercises</div>
-<span class="sl" onclick="showPage('exA',null)">Exercise A - Analysis</span>
-<span class="sl" onclick="showPage('exB',null)">Exercise B - 2D Optim</span>
-<div class="sh">Resources</div>
-<span class="sl" onclick="showPage('exams',null)">&#128196; Past Exams</span>
-<span class="sl" onclick="showPage('cs',null)">&#9889; Cheat Sheet</span>
+<div id="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside id="sidebar">
+<div class="sb-section"><div class="sb-head">Quick Questions</div>
+<div class="sb-link" onclick="showPage('q1',null)"><span class="badge bb">Q1</span>Matrices</div>
+<div class="sb-link" onclick="showPage('q2',null)"><span class="badge bp">Q2</span>Log/Exp</div>
+<div class="sb-link" onclick="showPage('q3',null)"><span class="badge bg">Q3</span>Domain</div>
+<div class="sb-link" onclick="showPage('q4',null)"><span class="badge bo">Q4</span>Derivatives</div>
+<div class="sb-link" onclick="showPage('q5',null)"><span class="badge br">Q5</span>2nd Deriv</div>
+<div class="sb-link" onclick="showPage('q6',null)"><span class="badge bg">Q6</span>Det/Trace</div>
+<div class="sb-link" onclick="showPage('q7',null)"><span class="badge bo">Q7</span>Min/Max</div>
+<div class="sb-link" onclick="showPage('q8',null)"><span class="badge bp">Q8</span>Eigenvals</div>
+</div>
+<div class="sb-section"><div class="sb-head">Long Exercises</div>
+<div class="sb-link" onclick="showPage('exA',null)"><span class="badge bb">Ex A</span>Function Analysis</div>
+<div class="sb-link" onclick="showPage('exB',null)"><span class="badge bp">Ex B</span>2D Optimisation</div>
+</div>
+<div class="sb-section"><div class="sb-head">Resources</div>
+<div class="sb-link" onclick="showPage('exams',null)"><span class="badge bo">&#x1F4C4;</span>Past Exams</div>
+<div class="sb-link" onclick="showPage('cs',null)"><span class="badge br">&#x26A1;</span>Cheat Sheet</div>
+</div>
 </aside>
 <main id="main">
-<!-- HOME -->
 <section class="page active" id="page-home">
 <div class="hero">
-<h1>&#x1F4D0; ECON Math &mdash; Complete Exam Notes</h1>
-<p>Every topic, every past exam pattern &mdash; so you can top.</p>
-<div class="flex mt"><span class="badge bb">10 Past Exams</span><span class="badge bg">8 Quick Questions</span><span class="badge bp">Exercise A+B Solved</span><span class="badge bo">Interactive Graphs</span></div>
+  <div class="page-meta"><span class="page-tag tag-blue">Study Guide</span></div>
+  <h1>ECON Math &mdash; Complete Exam Notes</h1>
+  <p class="hero-sub">Every topic, every past exam pattern. Built to get you to the top.</p>
+  <div class="flex">
+    <span class="badge bb">10 Past Exams</span>
+    <span class="badge bg">8 Quick Questions</span>
+    <span class="badge bp">Exercise A+B Solved</span>
+    <span class="badge bo">Interactive Graphs</span>
+  </div>
 </div>
-<div class="sg">
-<div class="sc"><div class="sn">10</div><div class="sl2">Past Exams</div></div>
-<div class="sc"><div class="sn">75</div><div class="sl2">Min per Exam</div></div>
-<div class="sc"><div class="sn">5/8</div><div class="sl2">Gate Rule</div></div>
-<div class="sc"><div class="sn">8</div><div class="sl2">Topics</div></div>
+
+<div class="stat-grid">
+  <div class="stat-card"><div class="stat-n">10</div><div class="stat-l">Past Exams</div></div>
+  <div class="stat-card"><div class="stat-n">75</div><div class="stat-l">Min per Exam</div></div>
+  <div class="stat-card"><div class="stat-n">5/8</div><div class="stat-l">Gate Rule</div></div>
+  <div class="stat-card"><div class="stat-n">8</div><div class="stat-l">Topics</div></div>
 </div>
+
 <h2>Exam Structure</h2>
 <div class="card card-blue">
-<p><strong>Format:</strong> 8 quick questions + Exercise A + Exercise B. Time: 75 minutes.</p>
-<p><strong>Gate Rule:</strong> Need <strong>5/8</strong> quick questions correct to unlock A &amp; B. Final mark is A+B only.</p>
-<p><strong>Strategy:</strong> Max 2 min each on Q1&ndash;Q8 (aim 6&ndash;7 correct), 30 min on A, 27 min on B.</p>
+  <p><strong>Format:</strong> 8 quick questions + Exercise A + Exercise B. Total time: 75 minutes.</p>
+  <p><strong>Gate Rule:</strong> You need at least <strong>5/8</strong> quick questions correct to unlock marks on A &amp; B. Final grade = A + B only.</p>
+  <p><strong>Strategy:</strong> Max 2 min each on Q1&ndash;Q8 (aim 6&ndash;7 correct) &rarr; 30 min on A &rarr; 27 min on B.</p>
 </div>
-<div class="warn"><div class="bi">&#9888;&#65039;</div><div class="bc"><strong>THE PATTERN</strong>The professor reuses the same question structure every exam &mdash; he only changes the numbers or function. Master the method once, answer any version.</div></div>
+<div class="warn"><div class="bi">&#x26A0;&#65039;</div><div class="bc"><strong>THE PATTERN</strong>The professor reuses the same question structure every exam &mdash; only numbers/functions change. Master the method once, answer any version.</div></div>
+
 <h2>Jump to Topic</h2>
-<div class="tg">
-<div class="tc" onclick="showPage('q1',null)"><div class="tci">&#x1F522;</div><div class="tct">Q1 &ndash; Matrix Multiplication</div><div class="tcs">3 cases: col&times;row, row&times;col, full</div></div>
-<div class="tc" onclick="showPage('q2',null)"><div class="tci">&#x1F4C8;</div><div class="tct">Q2 &ndash; Log &amp; Exponential</div><div class="tcs">e^(ln x)=x, all identities</div></div>
-<div class="tc" onclick="showPage('q3',null)"><div class="tci">&#x1F5FA;&#65039;</div><div class="tct">Q3 &ndash; Domain</div><div class="tcs">sqrt, log, fraction, 2D</div></div>
-<div class="tc" onclick="showPage('q4',null)"><div class="tci">&#x1F4D0;</div><div class="tct">Q4 &ndash; Derivatives</div><div class="tcs">Quotient, product, chain rules</div></div>
-<div class="tc" onclick="showPage('q5',null)"><div class="tci">&#x1F4C9;</div><div class="tct">Q5 &ndash; 2nd Derivative</div><div class="tcs">Always product rule for f''</div></div>
-<div class="tc" onclick="showPage('q6',null)"><div class="tci">&#x1F532;</div><div class="tct">Q6 &ndash; Det &amp; Trace</div><div class="tcs">Shortcut checks first</div></div>
-<div class="tc" onclick="showPage('q7',null)"><div class="tci">&#x26F0;&#65039;</div><div class="tct">Q7 &ndash; 1D Min/Max</div><div class="tcs">f'=0, vertex formula</div></div>
-<div class="tc" onclick="showPage('q8',null)"><div class="tci">&lambda;</div><div class="tct">Q8 &ndash; Eigenvalues</div><div class="tcs">Diagonal Hessian trick</div></div>
-<div class="tc" onclick="showPage('exA',null)"><div class="tci">&#x1F4CA;</div><div class="tct">Exercise A &ndash; Full Analysis</div><div class="tcs">Domain&rarr;Limits&rarr;f'&rarr;f''&rarr;Sketch</div></div>
-<div class="tc" onclick="showPage('exB',null)"><div class="tci">&#x1F310;</div><div class="tct">Exercise B &ndash; 2D Optim</div><div class="tcs">CPs, Hessian, Taylor, Classify</div></div>
+<div class="topic-grid">
+<div class="topic-card" onclick="showPage('q1',null)"><div class="tc-icon">&#x1F522;</div><div class="tc-title">Q1 &ndash; Matrix Mult</div><div class="tc-sub">3 cases: col&times;row, row&times;col, full</div></div>
+<div class="topic-card" onclick="showPage('q2',null)"><div class="tc-icon">&#x1F4C8;</div><div class="tc-title">Q2 &ndash; Log &amp; Exp</div><div class="tc-sub">e^(ln x)=x, all identities</div></div>
+<div class="topic-card" onclick="showPage('q3',null)"><div class="tc-icon">&#x1F5FA;&#xFE0F;</div><div class="tc-title">Q3 &ndash; Domain</div><div class="tc-sub">sqrt, log, fraction rules</div></div>
+<div class="topic-card" onclick="showPage('q4',null)"><div class="tc-icon">&#x1F4D0;</div><div class="tc-title">Q4 &ndash; Derivatives</div><div class="tc-sub">Quotient, product, chain</div></div>
+<div class="topic-card" onclick="showPage('q5',null)"><div class="tc-icon">&#x1F4C9;</div><div class="tc-title">Q5 &ndash; 2nd Derivative</div><div class="tc-sub">Product rule for f''</div></div>
+<div class="topic-card" onclick="showPage('q6',null)"><div class="tc-icon">&#x1F532;</div><div class="tc-title">Q6 &ndash; Det &amp; Trace</div><div class="tc-sub">Shortcut checks first</div></div>
+<div class="topic-card" onclick="showPage('q7',null)"><div class="tc-icon">&#x26F0;&#xFE0F;</div><div class="tc-title">Q7 &ndash; 1D Min/Max</div><div class="tc-sub">f'=0, vertex formula</div></div>
+<div class="topic-card" onclick="showPage('q8',null)"><div class="tc-icon">&lambda;</div><div class="tc-title">Q8 &ndash; Eigenvalues</div><div class="tc-sub">Diagonal Hessian trick</div></div>
+<div class="topic-card" onclick="showPage('exA',null)"><div class="tc-icon">&#x1F4CA;</div><div class="tc-title">Exercise A</div><div class="tc-sub">Domain&rarr;Limits&rarr;f'&rarr;f''&rarr;Sketch</div></div>
+<div class="topic-card" onclick="showPage('exB',null)"><div class="tc-icon">&#x1F310;</div><div class="tc-title">Exercise B</div><div class="tc-sub">CPs, Hessian, Taylor, Classify</div></div>
 </div>
 <h2>Exam Timetable</h2>
-<table><thead><tr><th>Time</th><th>Task</th><th>Target</th></tr></thead><tbody>
+<div class="table-wrap"><table>
+<thead><tr><th>Time</th><th>Task</th><th>Target</th></tr></thead>
+<tbody>
 <tr><td>0&ndash;16 min</td><td>Quick Questions Q1&ndash;Q8</td><td>6&ndash;7 correct, skip if stuck</td></tr>
-<tr><td>16&ndash;46 min</td><td>Exercise A (5 parts)</td><td>Domain &rarr; Limits &rarr; f' &rarr; f'' &rarr; Sketch</td></tr>
+<tr><td>16&ndash;46 min</td><td>Exercise A (5 parts)</td><td>Domain &rarr; Limits &rarr; f&prime; &rarr; f&prime;&prime; &rarr; Sketch</td></tr>
 <tr><td>46&ndash;73 min</td><td>Exercise B (5&ndash;6 parts)</td><td>Find ALL critical points, classify each</td></tr>
 <tr><td>73&ndash;75 min</td><td>Quick review</td><td>Show asymptotes? Taylor &frac12; factor?</td></tr>
-</tbody></table>
+</tbody>
+</table></div>
 </section>
-<section class="page" id="page-q1">
+<section class="page math-content" id="page-q1">
+<div class="page-meta"><span class="page-tag tag-blue">Quick Question</span></div>
 <h1>Q1 &ndash; Matrix Multiplication</h1>
-<p class="tm">Every exam: two matrices given, compute the product. Always write sizes first.</p>
-<div class="tip"><div class="bi">&#x1F4A1;</div><div class="bc"><strong>Golden Rule</strong>$(m\times n)\cdot(n\times p)=(m\times p)$. Inner dims must match.</div></div>
-<h2>The 3 Cases That Appear</h2>
-<div class="card card-blue"><h3>Case 1 &mdash; Column (3&times;1) &times; Row (1&times;3) = Matrix (3&times;3)</h3>
-<div class="fbox">$$\begin{pmatrix}a\\b\\c\end{pmatrix}\begin{pmatrix}d&e&f\end{pmatrix}=\begin{pmatrix}ad&ae&af\\bd&be&bf\\cd&ce&cf\end{pmatrix}$$</div>
-<div class="tip"><div class="bi">&#x1F4DD;</div><div class="bc"><strong>Jan/Dec 2025 &amp; Mar/Dec 2025:</strong> $M=\begin{pmatrix}-5\\3\\-5\end{pmatrix}$, $N=\begin{pmatrix}0&-2&3\end{pmatrix}$ &rarr; 3&times;3 result. Each row = $M_i\times N$.</div></div></div>
-<div class="card card-purple"><h3>Case 2 &mdash; Row (1&times;3) &times; Column (3&times;1) = Scalar</h3>
-<div class="fbox">$$[a,b,c]\begin{pmatrix}d\\e\\f\end{pmatrix}=ad+be+cf$$</div>
-<div class="tip"><div class="bi">&#x1F4DD;</div><div class="bc"><strong>Jan 2026:</strong> $A=[-\frac{5}{9},\frac{1}{3},\frac{5}{9}]\cdot[0,-2,3]^T=0-\frac{2}{3}+\frac{5}{3}=1$</div></div></div>
-<div class="card card-green"><h3>Case 3 &mdash; (3&times;3) &times; (3&times;2) = (3&times;2)</h3>
-<p>Compute each of the 6 entries: $R[i,j]=\text{row }i\text{ of left}\cdot\text{col }j\text{ of right}$</p>
-<div class="tip"><div class="bi">&#x1F4DD;</div><div class="bc"><strong>Jul 2025:</strong> $A=\begin{pmatrix}-5&0&0\\3&1&1\\-5&1&1\end{pmatrix}$, $B=\begin{pmatrix}0&1\\-2&1\\3&1\end{pmatrix}$ &rarr; $AB=\begin{pmatrix}0&-5\\1&5\\1&-3\end{pmatrix}$</div></div></div>
-<div class="danger"><div class="bi">&#x26A0;&#65039;</div><div class="bc"><strong>Common Mistakes</strong>1. Multiplying incompatible sizes &nbsp; 2. Taking col&times;col instead of row&times;col &nbsp; 3. Forgetting $AB\neq BA$</div></div>
-<h2>All Q1 Past Exams &mdash; Solved</h2>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Jan 2025</span><span class="qt">$M=\begin{pmatrix}1\\3\\1\end{pmatrix}$, $N=\begin{pmatrix}1&c&1\end{pmatrix}$. Find $M\cdot N$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Type: (3&times;1)&times;(1&times;3)=3&times;3</p><div class="fbox">$$M\cdot N=\begin{pmatrix}1&c&1\\3&3c&3\\1&c&1\end{pmatrix}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Mar/Dec 2025</span><span class="qt">$A=\begin{pmatrix}-5\\3\\-5\end{pmatrix}$, $B=\begin{pmatrix}0&-2&3\end{pmatrix}$. Find $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$A\cdot B=\begin{pmatrix}0&10&-15\\0&-6&9\\0&10&-15\end{pmatrix}$$</div><p>Each row $i$: $A_i\times B$. Row 1: $(-5)(0)=0$, $(-5)(-2)=10$, $(-5)(3)=-15$.</p></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Jan 2026</span><span class="qt">$A=\begin{pmatrix}-\frac{5}{9}&\frac{1}{3}&\frac{5}{9}\end{pmatrix}$ (row), $B=\begin{pmatrix}0\\-2\\3\end{pmatrix}$ (col). Find $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$A\cdot B=\frac{-5}{9}(0)+\frac{1}{3}(-2)+\frac{5}{9}(3)=0-\frac{2}{3}+\frac{5}{3}=\boxed{1}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Mar 2026</span><span class="qt">$A=\begin{pmatrix}\frac{2}{3}&-\frac{1}{2}&\frac{1}{6}\end{pmatrix}$, $B=\begin{pmatrix}3\\0\\-6\end{pmatrix}$. Find $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$\frac{2}{3}(3)+(-\frac{1}{2})(0)+\frac{1}{6}(-6)=2+0-1=\boxed{1}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">May 2026</span><span class="qt">$A=\begin{pmatrix}\frac{1}{2}&-\frac{2}{3}&\frac{1}{3}\end{pmatrix}$, $B=\begin{pmatrix}6\\-3\\3\end{pmatrix}$. Compute $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$\frac{1}{2}(6)+(-\frac{2}{3})(-3)+\frac{1}{3}(3)=3+2+1=\boxed{6}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Jul 2025</span><span class="qt">$A$ (3&times;3), $B$ (3&times;2). Compute full product.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$A\cdot B=\begin{pmatrix}0&-5\\1&5\\1&-3\end{pmatrix}$$</div><p>$R[1,1]=(-5)(0)+(0)(-2)+(0)(3)=0$. $R[2,1]=(3)(0)+(1)(-2)+(1)(3)=1$. etc.</p></div></div>
+<p class="tm">Two matrices given &mdash; compute the product. Always write sizes first.</p>
+<div class="tip"><div class="bi">&#x1F4A1;</div><div class="bc"><strong>Golden Rule</strong>$(m\times n)\cdot(n\times p)=(m\times p)$. Inner dimensions must match.</div></div>
+<h2>The 3 Cases</h2>
+<div class="card card-blue"><h3>Case 1 &mdash; Column&times;Row = Matrix (3&times;1)(1&times;3)&rarr;(3&times;3)</h3><div class="fbox">$$\begin{pmatrix}a\\b\\c\end{pmatrix}\begin{pmatrix}d&e&f\end{pmatrix}=\begin{pmatrix}ad&ae&af\\bd&be&bf\\cd&ce&cf\end{pmatrix}$$</div><p>Each row of left times the full row vector.</p></div>
+<div class="card card-green"><h3>Case 2 &mdash; Row&times;Column = Scalar (1&times;3)(3&times;1)&rarr;scalar</h3><div class="fbox">$$[a,b,c]\begin{pmatrix}d\\e\\f\end{pmatrix}=ad+be+cf$$</div></div>
+<div class="card card-purple"><h3>Case 3 &mdash; (3&times;3)(3&times;2)=(3&times;2) full product</h3><p>Entry $(i,j)$ = row $i$ of left DOT col $j$ of right. Compute all 6 entries.</p></div>
+<div class="danger"><div class="bi">&#x26A0;&#65039;</div><div class="bc"><strong>Common Mistakes</strong>1. Incompatible sizes &nbsp;&nbsp; 2. $AB\neq BA$ in general &nbsp;&nbsp; 3. Col&times;col is undefined</div></div>
+<h2>All Past Exam Q1s</h2>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Jan 2025</span><span class="qt">$M=\begin{pmatrix}1\\3\\1\end{pmatrix}$, $N=\begin{pmatrix}1&c&1\end{pmatrix}$. Find $M\cdot N$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$M\cdot N=\begin{pmatrix}1&c&1\\3&3c&3\\1&c&1\end{pmatrix}$$</div><p>Type: (3&times;1)(1&times;3) &rarr; 3&times;3. Row $i$ = $M_i\cdot N$.</p></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Mar 2025</span><span class="qt">$A=\begin{pmatrix}-5\\3\\-5\end{pmatrix}$, $B=\begin{pmatrix}0&-2&3\end{pmatrix}$. Find $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$A\cdot B=\begin{pmatrix}0&10&-15\\0&-6&9\\0&10&-15\end{pmatrix}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Dec 2025</span><span class="qt">Same as Mar 2025.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Same matrix dimensions and method.</p></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Jul 2025</span><span class="qt">$A=\begin{pmatrix}-5&0&0\\3&1&1\\-5&1&1\end{pmatrix}$, $B=\begin{pmatrix}0&1\\-2&1\\3&1\end{pmatrix}$. Find $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$A\cdot B=\begin{pmatrix}0&-5\\1&5\\1&-3\end{pmatrix}$$</div><p>Row 1: $(-5)(0)+0+0=0$; $(-5)(1)+0+0=-5$. Row 2: $0+(-2)+3=1$; $3+1+1=5$. Row 3: $0+(-2)+3=1$; $-5+1+1=-3$.</p></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Jan 2026</span><span class="qt">$A=\begin{pmatrix}-\frac{5}{9}&\frac{1}{3}&\frac{5}{9}\end{pmatrix}$, $B=\begin{pmatrix}0\\-2\\3\end{pmatrix}$. Compute $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$0-\frac{2}{3}+\frac{5}{3}=\boxed{1}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">Mar 2026</span><span class="qt">$A=\begin{pmatrix}\frac{2}{3}&-\frac{1}{2}&\frac{1}{6}\end{pmatrix}$, $B=\begin{pmatrix}3\\0\\-6\end{pmatrix}$. Compute $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$2+0-1=\boxed{1}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q1">Q1</span><span class="qd">May 2026</span><span class="qt">$A=\begin{pmatrix}\frac{1}{2}&-\frac{2}{3}&\frac{1}{3}\end{pmatrix}$, $B=\begin{pmatrix}6\\-3\\3\end{pmatrix}$. Compute $A\cdot B$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$3+2+1=\boxed{6}$$</div></div></div>
 </section>
-<section class="page" id="page-q2">
+<section class="page math-content" id="page-q2">
+<div class="page-meta"><span class="page-tag tag-purple">Quick Question</span></div>
 <h1>Q2 &ndash; Logarithms &amp; Exponentials</h1>
-<p class="tm">Evaluate $f(x_0)$ where $x_0$ is given as $\ln(1)$, $\log(\ldots)$, etc.</p>
-<div class="danger"><div class="bi">&#x1F511;</div><div class="bc"><strong>THE KEY CANCELLATIONS &mdash; memorise first</strong>$e^{\ln x}=x$ and $\ln(e^x)=x$ &mdash; they cancel completely. Use BEFORE any calculation.</div></div>
-<div class="gw"><div class="gt">y = ln(x) and y = e&#x02E3; are mirror images across y = x</div><canvas id="graph-logexp" width="520" height="260"></canvas></div>
-<h2>Every Identity with WHY</h2>
-<div class="card card-blue"><h3>$\ln(1)=0$ and $\log(1)=0$</h3>
-<p>Because $e^0=1$. The power you raise $e$ to in order to get 1 is 0. Whenever you see $\log(1)$ &mdash; replace with $0$ instantly.</p></div>
-<div class="card card-green"><h3>$e^{\ln x}=x$ &mdash; THE BIG ONE</h3>
-<div class="fbox">$$e^{\ln(\text{anything})}=\text{that thing}$$</div>
-<p><strong>Jul 2025:</strong> $g(x)=e^{\ln(1/x^2+3/x+4)}$ &rarr; cancel: $g(x)=\frac{1}{x^2}+\frac{3}{x}+4$, so $g(1)=1+3+4=\mathbf{8}$. NOT $e^8$!</p></div>
-<div class="card card-purple"><h3>$\ln(e^x)=x$</h3>
-<p>Same cancellation reversed. $k(x)=\ln(e^x)\Rightarrow k(x)=x\Rightarrow k'(x)=1$.</p>
-<div class="tip"><div class="bi">&#x26A0;&#65039;</div><div class="bc">Appeared in Jan 2026 and Mar 2026 Q4. Do NOT use chain rule &mdash; simplify first!</div></div></div>
-<div class="card card-orange"><h3>Product / Quotient / Power Rules</h3>
-<div class="fbox">$$\ln(ab)=\ln a+\ln b \qquad \ln\!\left(\frac{a}{b}\right)=\ln a-\ln b \qquad \ln(a^n)=n\ln a$$</div>
-<p>Special: $\ln(1/x)=-\ln x$</p></div>
-<h2>Common Log Values to Memorise</h2>
-<table><thead><tr><th>Expression</th><th>Value</th><th>Why</th></tr></thead><tbody>
+<p class="tm">Evaluate $f(x_0)$ where $x_0$ involves $\ln$ or $\log$.</p>
+<div class="danger"><div class="bi">&#x1F511;</div><div class="bc"><strong>Cancel first &mdash; always</strong>$e^{\ln x}=x$ and $\ln(e^x)=x$. These cancel completely. Use before any calculation.</div></div>
+<div class="gw"><div class="gt">y = ln x (blue) and y = e&#x02E3; (green) &mdash; mirror images across y = x</div><canvas id="graph-logexp" width="520" height="240"></canvas></div>
+<h2>Core Identities</h2>
+<div class="card card-blue"><h3>The Big Cancellations</h3><div class="big-formula">$$e^{\ln x}=x \qquad \ln(e^x)=x \qquad \log(1)=0 \qquad \ln(1)=0$$</div></div>
+<div class="card card-green"><h3>Product / Quotient / Power</h3><div class="fbox">$$\ln(ab)=\ln a+\ln b \qquad \ln\!\left(\frac{a}{b}\right)=\ln a-\ln b \qquad \ln(a^n)=n\ln a$$</div></div>
+<div class="table-wrap"><table><thead><tr><th>Expression</th><th>Value</th><th>Why</th></tr></thead><tbody>
 <tr><td>$\log(1)$</td><td>$0$</td><td>$10^0=1$</td></tr>
 <tr><td>$\log(2)$</td><td>$\approx 0.301$</td><td>Memorise!</td></tr>
-<tr><td>$\log(4)$</td><td>$2\log 2\approx 0.602$</td><td>$\log(2^2)=2\log 2$</td></tr>
+<tr><td>$\log(4)$</td><td>$\approx 0.602$</td><td>$2\log 2$</td></tr>
 <tr><td>$\ln(1)$</td><td>$0$</td><td>$e^0=1$</td></tr>
 <tr><td>$\ln(e)$</td><td>$1$</td><td>$e^1=e$</td></tr>
-<tr><td>$e^0$</td><td>$1$</td><td>anything$^0=1$</td></tr>
-</tbody></table>
-<h2>All Q2 Past Exams &mdash; Solved</h2>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Jan 2025</span><span class="qt">$f(x)=e^{x^2+x}$. Find $f(\ln 1)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="steps"><div class="step"><div class="step-c"><strong>Evaluate input:</strong> $\ln 1=0$, so $x=0$</div></div><div class="step"><div class="step-c">$f(0)=e^{0+0}=e^0=\boxed{1}$</div></div></div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Mar/Dec 2025</span><span class="qt">$g(x)=\log(x^2+3x+4)$. Find $g(-3)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$g(-3)=\log(9-9+4)=\log(4)=2\log 2\approx\boxed{0.602}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Jul 2025</span><span class="qt">$g(x)=e^{\ln(1/x^2+3/x+4)}$. Find $g(1)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="danger"><div class="bi">&#x1F511;</div><div class="bc"><strong>CANCEL FIRST:</strong> $e^{\ln(\ldots)}=(\ldots)$, so $g(x)=\frac{1}{x^2}+\frac{3}{x}+4$</div></div><div class="fbox">$$g(1)=1+3+4=\boxed{8}\quad\text{(NOT }e^8\text{!)}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Jan 2026</span><span class="qt">$g(x)=\log(x^2+3x+1)$. Find $g(0)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$g(0)=\log(0+0+1)=\log(1)=\boxed{0}$$</div></div></div>
+<tr><td>$e^0$</td><td>$1$</td><td>definition</td></tr>
+</tbody></table></div>
+<h2>All Past Exam Q2s</h2>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Jan 2025</span><span class="qt">$f(x)=e^{x^2+x}$. Find $f(\ln 1)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="steps"><div class="step"><div class="step-c">$\ln 1=0$, so $x_0=0$</div></div><div class="step"><div class="step-c">$f(0)=e^{0+0}=e^0=\boxed{1}$</div></div></div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Mar 2025</span><span class="qt">$g(x)=\log(x^2+3x+4)$. Find $g(-3)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$g(-3)=\log(9-9+4)=\log(4)=2\log 2\approx\boxed{0.602}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Jul 2025</span><span class="qt">$g(x)=e^{\ln(1/x^2+3/x+4)}$. Find $g(1)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="danger"><div class="bi">&#x1F511;</div><div class="bc"><strong>Cancel first:</strong> $e^{\ln(\ldots)}=(\ldots)$, so $g(x)=\frac{1}{x^2}+\frac{3}{x}+4$.</div></div><div class="fbox">$$g(1)=1+3+4=\boxed{8}\quad\text{(NOT }e^8\text{!)}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Dec 2025</span><span class="qt">$g(x)=\log(x^2+3x+4)$. Find $g(-3)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$\log(4)=2\log 2\approx\boxed{0.602}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Jan 2026</span><span class="qt">$g(x)=\log(x^2+3x+1)$. Find $g(0)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$g(0)=\log(1)=\boxed{0}$$</div></div></div>
 <div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">Mar 2026</span><span class="qt">$g(x)=\log(x^2+2x+2)$. Find $g(0)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$g(0)=\log(2)\approx\boxed{0.301}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">May 2026</span><span class="qt">$g(x)=\log(x^2+1)$. Find $g(1)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$g(1)=\log(1+1)=\log(2)\approx\boxed{0.301}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q2">Q2</span><span class="qd">May 2026</span><span class="qt">$g(x)=\log(x^2+1)$. Find $g(1)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$g(1)=\log(2)\approx\boxed{0.301}$$</div></div></div>
 </section>
-<section class="page" id="page-q3">
+<section class="page math-content" id="page-q3">
+<div class="page-meta"><span class="page-tag tag-green">Quick Question</span></div>
 <h1>Q3 &ndash; Domain of a Function</h1>
 <p class="tm">Find all $x$ (or $(x,y)$) where the function is defined.</p>
 <h2>The 4 Domain Rules</h2>
-<div class="card card-blue"><h3>Rule 1: $\sqrt{f(x)}$ requires $f(x)\geq 0$</h3><p>Square root of negative is not real. Exception: if in denominator $\frac{1}{\sqrt{f}}$, need $f(x)>0$ strictly.</p></div>
-<div class="card card-green"><h3>Rule 2: $\log f(x)$ or $\ln f(x)$ requires $f(x)>0$</h3><p>Must be <strong>strictly positive</strong> &mdash; not zero, not negative.</p></div>
-<div class="card card-orange"><h3>Rule 3: $\frac{1}{f(x)}$ requires $f(x)\neq 0$</h3><p>Exclude all $x$ where denominator is zero.</p></div>
-<div class="card card-purple"><h3>Rule 4: $\frac{1}{\ln f(x)}$ &mdash; TWO conditions</h3><p>$f(x)>0$ AND $f(x)\neq 1$ (because $\ln(1)=0$ would divide by zero). <strong>Jan 2025:</strong> $f=\frac{1}{\ln(x^2+1)}$: $x^2+1>0$ always, but $x^2+1\neq 1\Rightarrow x\neq 0$. Domain: $\mathbb{R}\setminus\{0\}$</p></div>
-<h2>Sign Chart Method</h2>
-<p>When domain requires polynomial $>0$, use a sign chart:</p>
-<div class="steps">
-<div class="step"><div class="step-c"><strong>Factor</strong> the polynomial</div></div>
-<div class="step"><div class="step-c"><strong>Find roots</strong> (set =0)</div></div>
-<div class="step"><div class="step-c"><strong>Mark roots</strong> on number line</div></div>
-<div class="step"><div class="step-c"><strong>Test ONE point</strong> per interval</div></div>
-<div class="step"><div class="step-c"><strong>Domain</strong> = intervals where positive (or &ge;0 for sqrt)</div></div>
-</div>
-<div class="card card-blue"><h4>Example: $x^3-x>0$ (Jan 2026 Q3)</h4>
-<p>Factor: $x(x-1)(x+1)=0$ &rarr; roots $-1,0,1$</p>
-<table><thead><tr><th>Interval</th><th>$x$</th><th>$(x-1)$</th><th>$(x+1)$</th><th>Product</th></tr></thead><tbody>
-<tr><td>$(-\infty,-1)$</td><td>-</td><td>-</td><td>-</td><td><span class="sign-neg">-</span></td></tr>
-<tr><td>$(-1,0)$</td><td>-</td><td>-</td><td>+</td><td><span class="sign-pos">+</span></td></tr>
-<tr><td>$(0,1)$</td><td>+</td><td>-</td><td>+</td><td><span class="sign-neg">-</span></td></tr>
-<tr><td>$(1,+\infty)$</td><td>+</td><td>+</td><td>+</td><td><span class="sign-pos">+</span></td></tr>
-</tbody></table>
-<p>Domain (where $>0$): $(-1,0)\cup(1,+\infty)$</p></div>
-<div class="gw"><div class="gt">Sign chart visualised: f(x) = x&sup3; &minus; x (roots at &minus;1, 0, 1)</div><canvas id="graph-signchart" width="520" height="220"></canvas></div>
+<div class="card card-blue"><h3>Rule 1 &mdash; $\sqrt{f(x)}$ needs $f(x)\geq 0$</h3><p>If in denominator $\frac{1}{\sqrt{f}}$, need $f(x)>0$ strictly.</p></div>
+<div class="card card-green"><h3>Rule 2 &mdash; $\ln f(x)$ or $\log f(x)$ needs $f(x)>0$</h3><p>Must be <strong>strictly positive</strong> &mdash; not zero, not negative.</p></div>
+<div class="card card-orange"><h3>Rule 3 &mdash; $\frac{1}{f(x)}$ needs $f(x)\neq 0$</h3><p>Exclude all roots of denominator.</p></div>
+<div class="card card-purple"><h3>Rule 4 &mdash; $\frac{1}{\ln f(x)}$ needs TWO conditions</h3><p>$f(x)>0$ AND $f(x)\neq 1$ (because $\ln 1=0$ &rarr; division by zero).</p></div>
+<h2>Sign Chart Method (for polynomials)</h2>
+<div class="steps"><div class="step"><div class="step-c"><strong>Factor</strong> the polynomial</div></div><div class="step"><div class="step-c"><strong>Find roots</strong>, mark on number line</div></div><div class="step"><div class="step-c"><strong>Test one point</strong> per interval</div></div><div class="step"><div class="step-c"><strong>Domain</strong> = intervals where condition satisfied</div></div></div>
+<div class="card card-blue"><h4>Example: $x^3-x>0$ (Jan 2026)</h4><p>Factor: $x(x-1)(x+1)=0$ &rarr; roots $-1,0,1$</p>
+<div class="table-wrap"><table><thead><tr><th>Interval</th><th>Sign</th></tr></thead><tbody>
+<tr><td>$(-\infty,-1)$</td><td><span class="sign-neg">&minus;</span></td></tr>
+<tr><td>$(-1,0)$</td><td><span class="sign-pos">+</span></td></tr>
+<tr><td>$(0,1)$</td><td><span class="sign-neg">&minus;</span></td></tr>
+<tr><td>$(1,+\infty)$</td><td><span class="sign-pos">+</span></td></tr>
+</tbody></table></div>
+<div class="fbox">$$D=(-1,0)\cup(1,+\infty)$$</div></div>
+<div class="gw"><div class="gt">f(x) = x&sup3; &minus; x, positive regions shaded</div><canvas id="graph-signchart" width="520" height="200"></canvas></div>
 <h2>2D Domain Patterns</h2>
-<table><thead><tr><th>Form</th><th>Condition</th><th>Shape</th></tr></thead><tbody>
-<tr><td>$\sqrt{A-x^2-y^2}$</td><td>$x^2+y^2\leq A$</td><td>Closed disk radius $\sqrt{A}$</td></tr>
-<tr><td>$\sqrt{x^2+y^2+A}$, $A>0$</td><td>Always $\geq A>0$</td><td>All of $\mathbb{R}^2$</td></tr>
-<tr><td>$\log(A-x^2-y^2)$</td><td>$x^2+y^2<A$</td><td>Open disk (boundary excluded!)</td></tr>
-<tr><td>$\log(x^2+y^2+1)$</td><td>Argument $\geq 1>0$ always</td><td>All of $\mathbb{R}^2$</td></tr>
-</tbody></table>
-<h2>All Q3 Past Exams &mdash; Solved</h2>
+<div class="table-wrap"><table><thead><tr><th>Form</th><th>Condition</th><th>Shape</th></tr></thead><tbody>
+<tr><td>$\sqrt{A-x^2-y^2}$</td><td>$x^2+y^2\leq A$</td><td>Closed disk $r=\sqrt{A}$</td></tr>
+<tr><td>$\sqrt{x^2+y^2+A}$, $A>0$</td><td>Always $\geq A>0$</td><td>All $\mathbb{R}^2$</td></tr>
+<tr><td>$\log(A-x^2-y^2)$</td><td>$x^2+y^2<A$</td><td>Open disk (no boundary)</td></tr>
+<tr><td>$\log(x^2+y^2+1)$</td><td>Always $\geq 1>0$</td><td>All $\mathbb{R}^2$</td></tr>
+</tbody></table></div>
+<h2>All Past Exam Q3s</h2>
 <div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">Jan 2025</span><span class="qt">$f(x)=\frac{1}{\ln(x^2+1)}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$x^2+1>0$ always. Need $\ln(x^2+1)\neq 0\Rightarrow x^2+1\neq 1\Rightarrow x\neq 0$.</p><div class="fbox">$$D_f=\mathbb{R}\setminus\{0\}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">Mar/Dec 2025</span><span class="qt">$h(x)=\frac{1}{\sqrt{x^2-2}}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Need $x^2-2>0$ (strictly, denominator). Roots $\pm\sqrt{2}$. Positive outside roots.</p><div class="fbox">$$D_h=(-\infty,-\sqrt{2})\cup(\sqrt{2},+\infty)$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">Jan 2026</span><span class="qt">$h(x,y)=\sqrt{x^2+y^2+1}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$x^2+y^2+1\geq 1>0$ always.</p><div class="fbox">$$D_h=\mathbb{R}^2$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">Mar 2026</span><span class="qt">$h(x,y)=\sqrt{x^2+y^2+4}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$D_h=\mathbb{R}^2$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">May 2026</span><span class="qt">$h(x,y)=\sqrt{9-x^2-y^2}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Need $9-x^2-y^2\geq 0$.</p><div class="fbox">$$D_h=\{(x,y):x^2+y^2\leq 9\}\text{ (closed disk, radius 3)}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">Mar 2025</span><span class="qt">$h(x)=\frac{1}{\sqrt{x^2-2}}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Need $x^2-2>0$ (strictly). Roots $\pm\sqrt{2}$.</p><div class="fbox">$$D=(-\infty,-\sqrt{2})\cup(\sqrt{2},+\infty)$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">Dec 2025</span><span class="qt">$h(x)=\frac{1}{\sqrt{x^2-2}}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$D=(-\infty,-\sqrt{2})\cup(\sqrt{2},+\infty)$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">Jan 2026</span><span class="qt">$h(x,y)=\sqrt{x^2+y^2+1}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$x^2+y^2+1\geq 1>0$ always.</p><div class="fbox">$$D=\mathbb{R}^2$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">Mar 2026</span><span class="qt">$h(x,y)=\sqrt{x^2+y^2+4}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$D=\mathbb{R}^2$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q3">Q3</span><span class="qd">May 2026</span><span class="qt">$h(x,y)=\sqrt{9-x^2-y^2}$. Domain?</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$D=\{(x,y):x^2+y^2\leq 9\}\text{ closed disk, radius }3$$</div></div></div>
 </section>
-<section class="page" id="page-q4">
+<section class="page math-content" id="page-q4">
+<div class="page-meta"><span class="page-tag tag-orange">Quick Question</span></div>
 <h1>Q4 &ndash; Derivatives</h1>
-<p class="tm">Always <strong>simplify first</strong> (e.g. $\ln(e^x)=x$), then differentiate.</p>
-<h2>The 3 Core Rules</h2>
-<div class="grid2">
-<div class="card card-blue"><h3>Quotient Rule</h3><div class="fbox">$$\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}$$</div><div class="danger"><div class="bi">&#x26A0;</div><div class="bc">It is MINUS in the numerator. Most common exam mistake.</div></div></div>
-<div class="card card-green"><h3>Product Rule</h3><div class="fbox">$$(uv)'=u'v+uv'$$</div></div>
-</div>
-<div class="card card-purple"><h3>Chain Rule &amp; Key Derivatives</h3><div class="fbox">$$\frac{d}{dx}[e^u]=e^u\cdot u'\qquad\frac{d}{dx}[\ln u]=\frac{u'}{u}\qquad\frac{d}{dx}[\log u]=\frac{u'}{u\ln 10}$$</div></div>
-<div class="tip"><div class="bi">&#x1F4A1;</div><div class="bc"><strong>Simplify First:</strong> $k(x)=\ln(e^x)\Rightarrow k(x)=x\Rightarrow k'(x)=1$. Much easier than chain rule!</div></div>
-<h2>All Q4 Past Exams &mdash; Solved</h2>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q4">Q4</span><span class="qd">Jan 2025</span><span class="qt">$f(\pi)=\frac{2\pi^2}{\pi^2+2}$. Find $f'(\pi)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$u=2\pi^2$, $v=\pi^2+2$, $u'=4\pi$, $v'=2\pi$.</p><div class="fbox">$$f'=\frac{4\pi(\pi^2+2)-2\pi^2(2\pi)}{(\pi^2+2)^2}=\frac{8\pi}{(\pi^2+2)^2}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q4">Q4</span><span class="qd">Mar/Dec 2025</span><span class="qt">$k(y)=\frac{e^y+4y}{y^2-5}$. Find $k'(y)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$u=e^y+4y$, $u'=e^y+4$; $v=y^2-5$, $v'=2y$.</p><div class="fbox">$$k'(y)=\frac{(e^y+4)(y^2-5)-(e^y+4y)(2y)}{(y^2-5)^2}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q4">Q4</span><span class="qd">Mar 2026</span><span class="qt">$k(x)=\ln(e^x)$. Find $k'(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="danger"><div class="bi">&#x1F511;</div><div class="bc"><strong>SIMPLIFY FIRST:</strong> $\ln(e^x)=x$, so $k(x)=x$ and $k'(x)=\boxed{1}$.</div></div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q4">Q4</span><span class="qd">May 2026</span><span class="qt">$k(x)=\ln(e^{2x})$. Find $k'(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="danger"><div class="bi">&#x1F511;</div><div class="bc"><strong>SIMPLIFY FIRST:</strong> $\ln(e^{2x})=2x$, so $k'(x)=\boxed{2}$.</div></div></div></div>
+<div class="tip"><div class="bi">&#x1F4A1;</div><div class="bc"><strong>Simplify first!</strong> $\ln(e^x)=x$ and $e^{\ln x}=x$. Always simplify before differentiating &mdash; saves a chain rule.</div></div>
+<div class="grid2"><div class="card card-blue"><h3>Quotient Rule</h3><div class="big-formula">$$\left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}$$</div><div class="danger"><div class="bi">&#x26A0;</div><div class="bc">MINUS in numerator. Most common mistake.</div></div></div>
+<div class="card card-green"><h3>Product Rule</h3><div class="big-formula">$$(uv)'=u'v+uv'$$</div></div></div>
+<div class="card card-purple"><h3>Key Derivatives</h3><div class="fbox">$$\frac{d}{dx}[e^u]=e^u\cdot u'\qquad\frac{d}{dx}[\ln u]=\frac{u'}{u}\qquad\frac{d}{dx}[\log u]=\frac{u'}{u\ln 10}$$</div></div>
+<h2>All Past Exam Q4s</h2>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q4">Q4</span><span class="qd">Jan 2025</span><span class="qt">$f(x)=\frac{2x^2}{x^2+2}$. Find $f'(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$u=2x^2$, $u'=4x$; $v=x^2+2$, $v'=2x$.</p><div class="fbox">$$f'(x)=\frac{4x(x^2+2)-2x^2(2x)}{(x^2+2)^2}=\frac{8x}{(x^2+2)^2}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q4">Q4</span><span class="qd">Mar 2025</span><span class="qt">$k(y)=\frac{e^y+4y}{y^2-5}$. Find $k'(y)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$u=e^y+4y$, $u'=e^y+4$; $v=y^2-5$, $v'=2y$.</p><div class="fbox">$$k'(y)=\frac{(e^y+4)(y^2-5)-(e^y+4y)(2y)}{(y^2-5)^2}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q4">Q4</span><span class="qd">Mar 2026</span><span class="qt">$k(x)=\ln(e^x)$. Find $k'(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="danger"><div class="bi">&#x1F511;</div><div class="bc"><strong>Simplify first:</strong> $\ln(e^x)=x$, so $k(x)=x$ and $k'(x)=\boxed{1}$.</div></div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q4">Q4</span><span class="qd">May 2026</span><span class="qt">$k(x)=\ln(e^{2x})$. Find $k'(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="danger"><div class="bi">&#x1F511;</div><div class="bc"><strong>Simplify first:</strong> $\ln(e^{2x})=2x$, so $k'(x)=\boxed{2}$.</div></div></div></div>
 </section>
-<section class="page" id="page-q5">
+<section class="page math-content" id="page-q5">
+<div class="page-meta"><span class="page-tag tag-red">Quick Question</span></div>
 <h1>Q5 &ndash; Second Derivative</h1>
-<div class="warn"><div class="bi">&#x26A0;&#65039;</div><div class="bc"><strong>Most common mistake:</strong> forgetting to use the product rule for $f''(x)$. $f'(x)$ is almost always a product &mdash; always apply product rule.</div></div>
-<div class="card card-blue"><h3>Key Pattern: $f(x)=e^{ax^2}$</h3>
-<p>$f'(x)=e^{ax^2}\cdot 2ax$ &nbsp; (chain rule)</p>
-<p>$f''(x)=(e^{ax^2})'\cdot 2ax+e^{ax^2}\cdot(2a)$ &nbsp; (product rule!)</p>
-<div class="fbox">$$f''(x)=e^{ax^2}(4a^2x^2+2a)$$</div></div>
-<h2>All Q5 Past Exams &mdash; Solved</h2>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q5">Q5</span><span class="qd">Jan 2025</span><span class="qt">$f(x)=e^{-x^2}$. Find $f''(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="steps"><div class="step"><div class="step-c">$f'(x)=-2x\,e^{-x^2}$</div></div><div class="step"><div class="step-c">$f''(x)=-2e^{-x^2}+(-2x)(-2x\,e^{-x^2})$</div></div><div class="step"><div class="step-c"><div class="fbox">$$f''(x)=e^{-x^2}(4x^2-2)$$</div></div></div></div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q5">Q5</span><span class="qd">Mar/Dec 2025</span><span class="qt">$m(x)=e^{-4x^2}$. Find $m''(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="steps"><div class="step"><div class="step-c">$m'(x)=-8x\,e^{-4x^2}$</div></div><div class="step"><div class="step-c">$m''(x)=-8e^{-4x^2}+(-8x)(-8x\,e^{-4x^2})$</div></div><div class="step"><div class="step-c"><div class="fbox">$$m''(x)=e^{-4x^2}(64x^2-8)$$</div></div></div></div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q5">Q5</span><span class="qd">Mar 2026</span><span class="qt">$m(x)=e^{-x}$. Find $m''(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$m'=-e^{-x}$, $m''=e^{-x}$</p><div class="fbox">$$m''(x)=\boxed{e^{-x}}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q5">Q5</span><span class="qd">May 2026</span><span class="qt">$m(x)=e^{2x}$. Find $m''(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$m'=2e^{2x}$, $m''=4e^{2x}$</p><div class="fbox">$$m''(x)=\boxed{4e^{2x}}$$</div></div></div>
+<div class="warn"><div class="bi">&#x26A0;&#65039;</div><div class="bc"><strong>Most common Q5 mistake:</strong> forgetting to use product rule for $f''$. After getting $f'$, it is almost always a product &mdash; always apply product rule.</div></div>
+<div class="card card-blue"><h3>Standard Pattern: $f(x)=e^{ax^2}$</h3><div class="fbox">$$f'(x)=2ax\cdot e^{ax^2}$$</div><p>$f'$ is a product $(2ax)\cdot(e^{ax^2})$, so product rule for $f''$:</p><div class="fbox">$$f''(x)=e^{ax^2}\cdot(4a^2x^2+2a)$$</div></div>
+<h2>All Past Exam Q5s</h2>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q5">Q5</span><span class="qd">Jan 2025</span><span class="qt">$f(x)=e^{-x^2}$. Find $f''(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="steps"><div class="step"><div class="step-c">$f'=-2x\,e^{-x^2}$</div></div><div class="step"><div class="step-c">Product rule: $f''=(-2)e^{-x^2}+(-2x)(-2x\,e^{-x^2})$</div></div><div class="step"><div class="step-c"><div class="fbox">$$f''(x)=e^{-x^2}(4x^2-2)$$</div></div></div></div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q5">Q5</span><span class="qd">Mar 2025</span><span class="qt">$m(x)=e^{-4x^2}$. Find $m''(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="steps"><div class="step"><div class="step-c">$m'=-8x\,e^{-4x^2}$</div></div><div class="step"><div class="step-c">$m''=-8e^{-4x^2}+(-8x)(-8x\,e^{-4x^2})$</div></div><div class="step"><div class="step-c"><div class="fbox">$$m''(x)=e^{-4x^2}(64x^2-8)$$</div></div></div></div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q5">Q5</span><span class="qd">Mar 2026</span><span class="qt">$m(x)=e^{-x}$. Find $m''(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$m'=-e^{-x},\quad m''=\boxed{e^{-x}}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q5">Q5</span><span class="qd">May 2026</span><span class="qt">$m(x)=e^{2x}$. Find $m''(x)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$m'=2e^{2x},\quad m''=\boxed{4e^{2x}}$$</div></div></div>
 </section>
-<section class="page" id="page-q6">
+<section class="page math-content" id="page-q6">
+<div class="page-meta"><span class="page-tag tag-green">Quick Question</span></div>
 <h1>Q6 &ndash; Determinant &amp; Trace</h1>
-<div class="grid2">
-<div class="card card-blue"><h3>Trace</h3><div class="fbox">$$\text{tr}(M)=\sum_i M_{ii}$$</div><p>Sum of diagonal entries. Compute first &mdash; it is always fast.</p></div>
-<div class="card card-green"><h3>2&times;2 Determinant</h3><div class="fbox">$$\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc$$</div></div>
-</div>
-<div class="card card-purple"><h3>3&times;3 Determinant &mdash; Cofactor Expansion (row 1)</h3>
-<div class="fbox">$$\det\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix}=a(ei-fh)-b(di-fg)+c(dh-eg)$$</div>
-<p>Signs: $+,-,+$. Choose the row/column with the most zeros to expand along.</p></div>
-<h2>Shortcut Checks &mdash; Do These FIRST</h2>
-<div class="tip"><div class="bi">&#x26A1;</div><div class="bc"><strong>Zero row/col:</strong> any entire row or column is all zeros &rarr; $\det=0$ instantly.</div></div>
-<div class="tip"><div class="bi">&#x26A1;</div><div class="bc"><strong>Identical rows:</strong> two rows are equal &rarr; $\det=0$ instantly.</div></div>
-<div class="tip"><div class="bi">&#x26A1;</div><div class="bc"><strong>Triangular matrix:</strong> $\det$ = product of diagonal entries.</div></div>
-<h2>All Q6 Past Exams &mdash; Solved</h2>
+<div class="grid2"><div class="card card-blue"><h3>Trace</h3><div class="fbox">$$\text{tr}(M)=\sum_i M_{ii}$$</div><p>Sum of diagonal entries. Always compute first &mdash; takes 5 seconds.</p></div>
+<div class="card card-green"><h3>2&times;2 Det</h3><div class="fbox">$$\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc$$</div></div></div>
+<div class="card card-purple"><h3>3&times;3 Det &mdash; Cofactor Expansion (row 1)</h3><div class="fbox">$$\det\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix}=a(ei-fh)-b(di-fg)+c(dh-eg)$$</div><div class="tip"><div class="bi">&#x26A1;</div><div class="bc">Signs: $+,-,+$. Always expand along the row/column with the MOST zeros.</div></div></div>
+<div class="tip"><div class="bi">&#x26A1;</div><div class="bc"><strong>Shortcut 1:</strong> Any row or column of zeros &rarr; $\det=0$ instantly.</div></div>
+<div class="tip"><div class="bi">&#x26A1;</div><div class="bc"><strong>Shortcut 2:</strong> Two identical rows &rarr; $\det=0$ instantly.</div></div>
+<div class="tip"><div class="bi">&#x26A1;</div><div class="bc"><strong>Shortcut 3:</strong> Triangular matrix &rarr; $\det$ = product of diagonal entries.</div></div>
+<h2>All Past Exam Q6s</h2>
 <div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q6">Q6</span><span class="qd">Jan 2025</span><span class="qt">$M=\begin{pmatrix}3&2&3\\0&0&0\\0&3&0\end{pmatrix}$. Find det and trace.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Row 2 all zeros &rarr; $\det=\boxed{0}$ instantly. Trace $=3+0+0=\boxed{3}$.</p></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q6">Q6</span><span class="qd">Mar/Dec 2025</span><span class="qt">$C=\begin{pmatrix}1&0&5\\5&4&4\\0&0&5\end{pmatrix}$. Find det and trace.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Trace $=1+4+5=\boxed{10}$. Expand col 3: only $C_{33}=5$ contributes. $\det=5\cdot\det\begin{pmatrix}1&0\\5&4\end{pmatrix}=5\cdot4=\boxed{20}$.</p></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q6">Q6</span><span class="qd">Mar 2026</span><span class="qt">$C=\begin{pmatrix}2&1&0\\0&3&0\\1&-1&4\end{pmatrix}$. Find det and trace.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Trace $=2+3+4=\boxed{9}$. Expand col 3: only $C_{33}=4$ contributes. $\det=4\cdot\det\begin{pmatrix}2&1\\0&3\end{pmatrix}=4\cdot6=\boxed{24}$.</p></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q6">Q6</span><span class="qd">May 2026</span><span class="qt">$C=\begin{pmatrix}1&0&2\\0&4&0\\-1&1&3\end{pmatrix}$. Find det and trace.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Trace $=1+4+3=\boxed{8}$. Expand row 1: $1\cdot(12-0)-0+2\cdot(0+4)=12+8=\boxed{20}$.</p></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q6">Q6</span><span class="qd">Mar 2025</span><span class="qt">$C=\begin{pmatrix}1&0&5\\5&4&4\\0&0&5\end{pmatrix}$. Find det and trace.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Trace $=1+4+5=\boxed{10}$. Expand col 3 (two zeros): $\det=5\cdot\det\binom{1\;0}{5\;4}=5\cdot4=\boxed{20}$.</p></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q6">Q6</span><span class="qd">Mar 2026</span><span class="qt">$C=\begin{pmatrix}2&1&0\\0&3&0\\1&-1&4\end{pmatrix}$. Find det and trace.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Trace $=2+3+4=\boxed{9}$. Expand col 3: $\det=4\cdot\det\binom{2\;1}{0\;3}=4\cdot6=\boxed{24}$.</p></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q6">Q6</span><span class="qd">May 2026</span><span class="qt">$C=\begin{pmatrix}1&0&2\\0&4&0\\-1&1&3\end{pmatrix}$. Find det and trace.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Trace $=1+4+3=\boxed{8}$. Row 1 expansion: $1(12-0)-0+2(0+4)=12+8=\boxed{20}$.</p></div></div>
 </section>
-<section class="page" id="page-q7">
-<h1>Q7 &ndash; Local Min/Max of 1D Functions</h1>
-<div class="card card-blue"><h3>Quadratic Shortcut</h3><div class="fbox">$$f(x)=ax^2+bx+c\Rightarrow x^*=-\frac{b}{2a}$$</div><p>$a>0\Rightarrow$ minimum; $a<0\Rightarrow$ maximum.</p></div>
-<div class="card card-green"><h3>General Method</h3>
-<div class="steps"><div class="step"><div class="step-c">Find $f'(x)$</div></div><div class="step"><div class="step-c">Solve $f'(x)=0$</div></div><div class="step"><div class="step-c">$f''(x_0)>0\Rightarrow$ min; $f''(x_0)<0\Rightarrow$ max</div></div></div></div>
-<h2>All Q7 Past Exams &mdash; Solved</h2>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">Jan 2025</span><span class="qt">$f(x)=x^3-4x$. Local minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f'=3x^2-4=0\Rightarrow x=\pm\frac{2}{\sqrt{3}}$. $f''=6x$. At $x=\frac{2}{\sqrt{3}}>0$: $f''>0\Rightarrow$ min.</p><div class="fbox">$$x_{\min}=\frac{2}{\sqrt{3}}=\frac{2\sqrt{3}}{3}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">Mar/Dec 2025</span><span class="qt">$q(x)=x^4-10x^2$. Local minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$q'=4x^3-20x=4x(x^2-5)=0\Rightarrow x=0,\pm\sqrt{5}$. $q''=12x^2-20$. At $x=\pm\sqrt{5}$: $q''=40>0\Rightarrow$ minima.</p><div class="fbox">$$x_{\min}=\pm\sqrt{5}$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">Mar 2026</span><span class="qt">$q(x)=x^2-4x+1$. Minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Vertex: $x^*=\frac{4}{2}=2$. $q(2)=4-8+1=-3$.</p><div class="fbox">$$x_{\min}=2,\quad f(2)=-3$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">May 2026</span><span class="qt">$q(x)=x^2-6x+5$. Minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$x_{\min}=3,\quad q(3)=9-18+5=-4$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">Dec 2024</span><span class="qt">$f(x)=x^2-2x$. Minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>Vertex: $x^*=\frac{2}{2}=1$. $f(1)=1-2=-1$.</p><div class="fbox">$$x_{\min}=1,\quad f(1)=-1$$</div></div></div>
+<section class="page math-content" id="page-q7">
+<div class="page-meta"><span class="page-tag tag-orange">Quick Question</span></div>
+<h1>Q7 &ndash; Local Min / Max</h1>
+<div class="grid2"><div class="card card-blue"><h3>Quadratic Shortcut</h3><div class="fbox">$$f(x)=ax^2+bx+c\Rightarrow x^*=-\frac{b}{2a}$$</div><p>$a>0$ &rarr; min &nbsp; $a<0$ &rarr; max</p></div>
+<div class="card card-green"><h3>General Method</h3><div class="steps"><div class="step"><div class="step-c">Find $f'(x)$</div></div><div class="step"><div class="step-c">Solve $f'(x)=0$</div></div><div class="step"><div class="step-c">$f''(x_0)>0\Rightarrow$ min; $<0\Rightarrow$ max</div></div></div></div></div>
+<h2>All Past Exam Q7s</h2>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">Jan 2025</span><span class="qt">$f(x)=x^3-4x$. Local minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f'=3x^2-4=0\Rightarrow x=\pm\frac{2}{\sqrt{3}}$. $f''=6x>0$ at $x=+\frac{2}{\sqrt{3}}$.</p><div class="fbox">$$x_{\min}=\frac{2\sqrt{3}}{3}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">Mar 2025</span><span class="qt">$q(x)=x^4-10x^2$. Local minima?</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$q'=4x^3-20x=4x(x^2-5)=0\Rightarrow x=0,\pm\sqrt{5}$. $q''=12x^2-20$. At $\pm\sqrt{5}$: $q''=40>0$.</p><div class="fbox">$$x_{\min}=\pm\sqrt{5}$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">Mar 2026</span><span class="qt">$q(x)=x^2-4x+1$. Minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$x^*=2,\quad q(2)=-3$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">May 2026</span><span class="qt">$q(x)=x^2-6x+5$. Minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$x^*=3,\quad q(3)=-4$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q7">Q7</span><span class="qd">Dec 2024</span><span class="qt">$f(x)=x^2-2x$. Minimum?</span><span class="chev">&#9660;</span></div><div class="eq-b"><div class="fbox">$$x^*=1,\quad f(1)=-1$$</div></div></div>
 </section>
-<section class="page" id="page-q8">
+<section class="page math-content" id="page-q8">
+<div class="page-meta"><span class="page-tag tag-purple">Quick Question</span></div>
 <h1>Q8 &ndash; Eigenvalues of the Hessian</h1>
-<div class="card card-blue"><h3>Hessian Matrix</h3><div class="fbox">$$H=\begin{pmatrix}f_{xx}&f_{xy}\\f_{yx}&f_{yy}\end{pmatrix}$$</div></div>
-<div class="card card-green"><h3>Eigenvalues of 2&times;2</h3><div class="fbox">$$\lambda_{1,2}=\frac{\text{tr}(H)\pm\sqrt{\text{tr}(H)^2-4\det(H)}}{2}$$</div>
-<div class="tip"><div class="bi">&#x26A1;</div><div class="bc"><strong>Diagonal shortcut:</strong> if $f_{xy}=0$, eigenvalues ARE the diagonal entries $f_{xx}$ and $f_{yy}$. No formula needed!</div></div></div>
-<h2>All Q8 Past Exams &mdash; Solved</h2>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">Jan 2025</span><span class="qt">$f(x,y)=x^2-y^2-2x-2y$. Eigenvalues of $H$ at $(77,25)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=2$, $f_{yy}=-2$, $f_{xy}=0$. Diagonal $H$ &rarr; eigenvalues = diagonal.</p><div class="fbox">$$\lambda_1=2,\quad\lambda_2=-2$$</div><p>The point $(77,25)$ is irrelevant &mdash; $H$ is constant here!</p></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">Mar/Dec 2025</span><span class="qt">$r(x,y)=x^2+y^2-2x+y$. Eigenvalues of $H$ at $(0,-2)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=2$, $f_{yy}=2$, $f_{xy}=0$. Diagonal.</p><div class="fbox">$$\lambda_1=\lambda_2=2$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">Mar 2026</span><span class="qt">$r(x,y)=e^{x+y}$. Find Hessian at $(0,0)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=f_{yy}=f_{xy}=e^{x+y}$. At $(0,0)$: all $=1$.</p><div class="fbox">$$H(0,0)=\begin{pmatrix}1&1\\1&1\end{pmatrix}\quad\Rightarrow\quad\lambda_1=2,\;\lambda_2=0$$</div><p>tr$=2$, det$=1-1=0$. $\lambda=\frac{2\pm 2}{2}$.</p></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">May 2026</span><span class="qt">$r(x,y)=e^{x-y}$. Hessian at $(0,0)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=e^{x-y}$, $f_{yy}=e^{x-y}$, $f_{xy}=-e^{x-y}$. At $(0,0)$:</p><div class="fbox">$$H=\begin{pmatrix}1&-1\\-1&1\end{pmatrix}\quad\Rightarrow\quad\lambda_1=2,\;\lambda_2=0$$</div></div></div>
-<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">Dec 2024</span><span class="qt">$f(x,y)=x^2+y^2$. Eigenvalues at $(0,0)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=2$, $f_{yy}=2$, $f_{xy}=0$. Diagonal.</p><div class="fbox">$$\lambda_1=\lambda_2=2$$</div></div></div>
+<div class="card card-blue"><h3>Hessian Matrix of $f(x,y)$</h3><div class="fbox">$$H=\begin{pmatrix}f_{xx}&f_{xy}\\f_{xy}&f_{yy}\end{pmatrix}$$</div></div>
+<div class="card card-green"><h3>Eigenvalues (2&times;2)</h3><div class="fbox">$$\lambda_{1,2}=\frac{\text{tr}(H)\pm\sqrt{\text{tr}(H)^2-4\det(H)}}{2}$$</div><div class="tip"><div class="bi">&#x26A1;</div><div class="bc"><strong>Diagonal shortcut:</strong> if $f_{xy}=0$, eigenvalues are just $f_{xx}$ and $f_{yy}$. No formula needed!</div></div></div>
+<h2>All Past Exam Q8s</h2>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">Jan 2025</span><span class="qt">$f(x,y)=x^2-y^2-2x-2y$. Eigenvalues of $H$ at $(77,25)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=2$, $f_{yy}=-2$, $f_{xy}=0$. Diagonal &rarr; read off. (Point is irrelevant &mdash; $H$ is constant.)</p><div class="fbox">$$\lambda_1=2,\quad\lambda_2=-2$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">Mar 2025</span><span class="qt">$r(x,y)=x^2+y^2-2x+y$. Eigenvalues at $(0,-2)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=2,f_{yy}=2,f_{xy}=0$. Diagonal.</p><div class="fbox">$$\lambda_1=\lambda_2=2$$</div></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">Mar 2026</span><span class="qt">$r(x,y)=e^{x+y}$. Hessian at $(0,0)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=f_{yy}=f_{xy}=e^{x+y}$. At $(0,0)$: all $=1$.</p><div class="fbox">$$H=\begin{pmatrix}1&1\\1&1\end{pmatrix}\Rightarrow\lambda_1=2,\;\lambda_2=0$$</div><p>tr$=2$, det$=0$.</p></div></div>
+<div class="eq"><div class="eq-h" onclick="tq(this)"><span class="qn q8">Q8</span><span class="qd">May 2026</span><span class="qt">$r(x,y)=e^{x-y}$. Hessian at $(0,0)$.</span><span class="chev">&#9660;</span></div><div class="eq-b"><p>$f_{xx}=e^{x-y},f_{yy}=e^{x-y},f_{xy}=-e^{x-y}$. At $(0,0)$:</p><div class="fbox">$$H=\begin{pmatrix}1&-1\\-1&1\end{pmatrix}\Rightarrow\lambda_1=2,\;\lambda_2=0$$</div></div></div>
 </section>
-<section class="page" id="page-exA">
+<section class="page math-content" id="page-exA">
+<div class="page-meta"><span class="page-tag tag-blue">Long Exercise</span></div>
 <h1>Exercise A &ndash; Full Function Analysis</h1>
-<p class="tm">Always follow all 5 steps. Each builds on the previous. Partial credit for each step shown.</p>
-<div class="card card-blue"><h3>The 5-Step Method (memorise the order)</h3><div class="steps">
-<div class="step"><div class="step-c"><strong>Domain $D_f$</strong> &mdash; apply the 4 domain rules</div></div>
-<div class="step"><div class="step-c"><strong>Limits at borders of $D_f$</strong> and at $\pm\infty$ &mdash; find asymptotes</div></div>
-<div class="step"><div class="step-c"><strong>$f'(x)$</strong> &mdash; compute, find sign chart &rarr; local max/min</div></div>
-<div class="step"><div class="step-c"><strong>$f''(x)$</strong> &mdash; compute, find sign chart &rarr; inflection points, convexity</div></div>
-<div class="step"><div class="step-c"><strong>Sketch</strong> &mdash; use everything from steps 1&ndash;4</div></div>
-</div></div>
-<h2>Asymptote Reference</h2>
-<table><thead><tr><th>Type</th><th>How to Find</th><th>Example</th></tr></thead><tbody>
-<tr><td>Vertical at $x=a$</td><td>$\lim_{x\to a^\pm}f(x)=\pm\infty$</td><td>$f=\frac{1}{x-a}$: VA at $x=a$</td></tr>
-<tr><td>Horizontal $y=L$</td><td>$\lim_{x\to\pm\infty}f(x)=L$</td><td>$f=\frac{x}{x^2-1}$: HA $y=0$</td></tr>
-<tr><td>Oblique $y=mx+b$</td><td>$m=\lim_{x\to\infty}\frac{f(x)}{x}$, $b=\lim[f-mx]$</td><td>When deg(top)=deg(bottom)+1</td></tr>
-</tbody></table>
-<h2>All Exercise A Functions &mdash; Fully Solved with Graphs</h2>
+<p class="tm">Follow all 5 steps in order. Partial marks for each step shown.</p>
+<div class="card card-blue"><h3>The 5-Step Method</h3><div class="steps"><div class="step"><div class="step-c"><strong>Domain $D_f$</strong> &mdash; apply the 4 domain rules</div></div><div class="step"><div class="step-c"><strong>Limits at borders of $D_f$</strong> and at $\pm\infty$ &mdash; find asymptotes</div></div><div class="step"><div class="step-c"><strong>$f'(x)$</strong> &mdash; sign chart &rarr; local max/min</div></div><div class="step"><div class="step-c"><strong>$f''(x)$</strong> &mdash; sign chart &rarr; inflection points &amp; convexity</div></div><div class="step"><div class="step-c"><strong>Sketch</strong> using everything above</div></div></div></div>
+<div class="table-wrap"><table><thead><tr><th>Asymptote</th><th>How to Find</th></tr></thead><tbody>
+<tr><td>Vertical at $x=a$</td><td>$\lim_{x\to a^\pm}f(x)=\pm\infty$</td></tr>
+<tr><td>Horizontal $y=L$</td><td>$\lim_{x\to\pm\infty}f(x)=L$</td></tr>
+<tr><td>Oblique $y=mx+b$</td><td>$m=\lim\frac{f(x)}{x}$, $b=\lim[f(x)-mx]$</td></tr>
+</tbody></table></div>
+<h2>All Past Exam Exercise A &mdash; Fully Solved</h2>
 <button class="cb" onclick="tc(this)">&#x1F4C5; Jan 2025 &mdash; $f(x)=\frac{5x^2-2x}{e^x}$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="gw"><div class="gt">f(x) = (5x&sup2;&minus;2x) / e&#x02E3;</div><canvas id="graph-jan2025" width="560" height="250"></canvas></div>
+<div class="gw"><div class="gt">f(x) = (5x&sup2;&minus;2x)/e&#x02E3;</div><canvas id="graph-jan2025" width="560" height="240"></canvas></div>
 <div class="steps">
-<div class="step"><div class="step-c"><strong>Domain:</strong> $D_f=\mathbb{R}$ (exp defined everywhere)</div></div>
-<div class="step"><div class="step-c"><strong>Limits:</strong> $\lim_{x\to+\infty}=0$ (exp dominates), $\lim_{x\to-\infty}=+\infty$. Horizontal asymptote $y=0$ as $x\to+\infty$.</div></div>
-<div class="step"><div class="step-c"><strong>$f'(x)$:</strong> quotient rule. $u=5x^2-2x$, $u'=10x-2$, $v=e^x$, $v'=e^x$.<br>$f'=\frac{(10x-2)e^x-(5x^2-2x)e^x}{e^{2x}}=\frac{-5x^2+12x-2}{e^x}$<br>Roots of numerator: $x=\frac{12\pm\sqrt{144-40}}{10}=\frac{12\pm\sqrt{104}}{10}\approx 0.18$ and $2.22$</div></div>
-<div class="step"><div class="step-c"><strong>Sign chart $f'$:</strong> positive between roots &rarr; increasing on $(0.18,2.22)$. Local min at $x\approx0.18$, local max at $x\approx2.22$.</div></div>
-<div class="step"><div class="step-c"><strong>Sketch:</strong> comes from $+\infty$ (left), has local min then max, asymptotes to $y=0$ from above.</div></div>
+<div class="step"><div class="step-c"><strong>Domain:</strong> $D_f=\mathbb{R}$</div></div>
+<div class="step"><div class="step-c"><strong>Limits:</strong> $\lim_{x\to+\infty}f=0$ (HA: $y=0$); $\lim_{x\to-\infty}f=+\infty$</div></div>
+<div class="step"><div class="step-c"><strong>$f'$:</strong> $f'=\frac{-5x^2+12x-2}{e^x}$. Roots $\approx0.18$ and $2.22$. Increasing on $(0.18,2.22)$. Local min at $x\approx0.18$, local max at $x\approx2.22$.</div></div>
+<div class="step"><div class="step-c"><strong>$f''$:</strong> Use quotient rule on $f'$. Sign changes give inflection points.</div></div>
+<div class="step"><div class="step-c"><strong>Sketch:</strong> Comes from $+\infty$ (left), has local min then max, decays to $y=0$.</div></div>
 </div></div>
 <button class="cb" onclick="tc(this)">&#x1F4C5; Mar 2025 &mdash; $f(x)=x^4-2x^3+1$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="gw"><div class="gt">f(x) = x&sup4; &minus; 2x&sup3; + 1</div><canvas id="graph-mar2025" width="560" height="250"></canvas></div>
+<div class="gw"><div class="gt">f(x) = x&#x2074;&minus;2x&sup3;+1</div><canvas id="graph-mar2025" width="560" height="240"></canvas></div>
 <div class="steps">
 <div class="step"><div class="step-c"><strong>Domain:</strong> $\mathbb{R}$</div></div>
-<div class="step"><div class="step-c"><strong>Limits:</strong> $\lim_{x\to\pm\infty}=+\infty$ (even degree). No asymptotes.</div></div>
-<div class="step"><div class="step-c"><strong>$f'(x)=4x^3-6x^2=2x^2(2x-3)$</strong>. Roots: $x=0$ (double), $x=3/2$. Sign: negative on $(-\infty,3/2)$ except $x=0$ where $f'=0$. Positive on $(3/2,+\infty)$. Local min at $x=3/2$. $x=0$ is an inflection (not extremum).</div></div>
-<div class="step"><div class="step-c"><strong>$f''(x)=12x^2-12x=12x(x-1)$</strong>. Roots: $x=0,1$. Inflection points at $x=0$: $f(0)=1$ and $x=1$: $f(1)=0$.</div></div>
-<div class="step"><div class="step-c"><strong>Sketch:</strong> $f(3/2)=(3/2)^4-2(3/2)^3+1=-11/16$ is the local min. Both ends go to $+\infty$.</div></div>
+<div class="step"><div class="step-c"><strong>Limits:</strong> $+\infty$ at both ends. No asymptotes.</div></div>
+<div class="step"><div class="step-c"><strong>$f'$:</strong> $f'=2x^2(2x-3)$. Roots: $x=0$ (double, inflection), $x=3/2$ (local min). $f(3/2)=-11/16$.</div></div>
+<div class="step"><div class="step-c"><strong>$f''$:</strong> $f''=12x(x-1)$. Inflections at $x=0$ ($f=1$) and $x=1$ ($f=0$).</div></div>
+<div class="step"><div class="step-c"><strong>Sketch:</strong> Both ends $+\infty$; local min at $x=3/2$.</div></div>
 </div></div>
-<button class="cb" onclick="tc(this)">&#x1F4C5; Dec 2024 / Nov 2025 &mdash; $f(x)=\ln\!\left(\frac{4-x}{x-2}\right)$ <span>&#9660;</span></button>
+<button class="cb" onclick="tc(this)">&#x1F4C5; Nov 2025 &mdash; $f(x)=\ln\!\left(\frac{4-x}{x-2}\right)$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="gw"><div class="gt">f(x) = ln((4&minus;x)/(x&minus;2))</div><canvas id="graph-nov2025" width="560" height="250"></canvas></div>
+<div class="gw"><div class="gt">f(x) = ln((4&minus;x)/(x&minus;2))</div><canvas id="graph-nov2025" width="560" height="240"></canvas></div>
 <div class="steps">
-<div class="step"><div class="step-c"><strong>Domain:</strong> need $\frac{4-x}{x-2}>0$. Both same sign: $(2,4)$. $D_f=(2,4)$.</div></div>
-<div class="step"><div class="step-c"><strong>Limits:</strong> $\lim_{x\to2^+}f=+\infty$, $\lim_{x\to4^-}f=-\infty$. Vertical asymptotes at $x=2$ and $x=4$.</div></div>
-<div class="step"><div class="step-c"><strong>$f'(x)$:</strong> Let $u=(4-x)/(x-2)$, $f=\ln u$. $u'=\frac{-(x-2)-(4-x)}{(x-2)^2}=\frac{-2}{(x-2)^2}$. $f'=\frac{u'}{u}=\frac{-2/(x-2)^2}{(4-x)/(x-2)}=\frac{-2}{(4-x)(x-2)}<0$ always on $(2,4)$. Strictly decreasing, no extrema.</div></div>
-<div class="step"><div class="step-c"><strong>$f''(x)$:</strong> differentiate $f'$. Inflection at $x=3$ (midpoint of domain by symmetry).</div></div>
-<div class="step"><div class="step-c"><strong>Sketch:</strong> strictly decreasing from $+\infty$ to $-\infty$ on $(2,4)$, inflection at $x=3$.</div></div>
-</div>
-<div class="info"><div class="bi">&#x2139;&#65039;</div><div class="bc">Dec 2024 version: $f=\ln\!\left(\frac{2-x}{x-4}\right)$ &mdash; same analysis, domain $(2,4)$.</div></div>
-</div>
+<div class="step"><div class="step-c"><strong>Domain:</strong> $\frac{4-x}{x-2}>0$. Sign chart: both same sign on $(2,4)$. $D_f=(2,4)$.</div></div>
+<div class="step"><div class="step-c"><strong>Limits:</strong> $x\to2^+$: $f\to+\infty$ (VA); $x\to4^-$: $f\to-\infty$ (VA).</div></div>
+<div class="step"><div class="step-c"><strong>$f'$:</strong> $f'=\frac{-2}{(4-x)(x-2)}<0$ always on $(2,4)$. Strictly decreasing, no extrema.</div></div>
+<div class="step"><div class="step-c"><strong>$f''$:</strong> Inflection at $x=3$ (midpoint by symmetry).</div></div>
+<div class="step"><div class="step-c"><strong>Sketch:</strong> Strictly decreasing from $+\infty$ to $-\infty$ on $(2,4)$.</div></div>
+</div></div>
 <button class="cb" onclick="tc(this)">&#x1F4C5; Dec 2025 &mdash; $f(x)=x^5-x^3$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="gw"><div class="gt">f(x) = x&#x2075; &minus; x&sup3;</div><canvas id="graph-dec2025" width="560" height="250"></canvas></div>
+<div class="gw"><div class="gt">f(x) = x&#x2075;&minus;x&sup3;</div><canvas id="graph-dec2025" width="560" height="240"></canvas></div>
 <div class="steps">
-<div class="step"><div class="step-c"><strong>Domain:</strong> $\mathbb{R}$. Odd function: $f(-x)=-f(x)$. Symmetric about origin.</div></div>
-<div class="step"><div class="step-c"><strong>Limits:</strong> $\pm\infty$ at $\pm\infty$. No asymptotes.</div></div>
-<div class="step"><div class="step-c"><strong>$f'(x)=5x^4-3x^2=x^2(5x^2-3)$</strong>. Roots: $x=0$, $x=\pm\sqrt{3/5}=\pm\frac{\sqrt{15}}{5}\approx\pm0.775$.</div></div>
-<div class="step"><div class="step-c">Sign chart: $f'<0$ on $(-\sqrt{3/5},0)\cup(0,\sqrt{3/5})$, positive outside. Local max at $x=-\sqrt{3/5}$, local min at $x=+\sqrt{3/5}$, $x=0$ is inflection.</div></div>
+<div class="step"><div class="step-c"><strong>Domain:</strong> $\mathbb{R}$. Odd function.</div></div>
+<div class="step"><div class="step-c"><strong>Limits:</strong> $\pm\infty$. No asymptotes.</div></div>
+<div class="step"><div class="step-c"><strong>$f'$:</strong> $f'=x^2(5x^2-3)$. Roots: $x=0$, $x=\pm\sqrt{3/5}\approx\pm0.775$. Local max at $-0.775$, local min at $+0.775$.</div></div>
+<div class="step"><div class="step-c"><strong>$f''$:</strong> $f''=20x^3-6x$. Inflections at $x=0,\pm\sqrt{3/10}$.</div></div>
+<div class="step"><div class="step-c"><strong>Sketch:</strong> Odd symmetry, local max left, local min right.</div></div>
 </div></div>
-<button class="cb" onclick="tc(this)">&#x1F4C5; Jan 2026 / Mar 2026 &mdash; $f(x)=\frac{1}{1-x^2}$ <span>&#9660;</span></button>
+<button class="cb" onclick="tc(this)">&#x1F4C5; Jan 2026 &mdash; $f(x)=\frac{1}{1-x^2}$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="gw"><div class="gt">f(x) = 1/(1&minus;x&sup2;)</div><canvas id="graph-jan2026" width="560" height="250"></canvas></div>
+<div class="gw"><div class="gt">f(x) = 1/(1&minus;x&sup2;)</div><canvas id="graph-jan2026" width="560" height="240"></canvas></div>
 <div class="steps">
-<div class="step"><div class="step-c"><strong>Domain:</strong> $1-x^2\neq0\Rightarrow x\neq\pm1$. $D_f=\mathbb{R}\setminus\{-1,1\}$</div></div>
-<div class="step"><div class="step-c"><strong>Limits:</strong> $\lim_{x\to\pm1}=\pm\infty$ (VAs at $x=\pm1$). $\lim_{x\to\pm\infty}f=0$ (HA: $y=0$). On $(-1,1)$: $f(0)=1>0$, goes to $+\infty$ at both ends.</div></div>
-<div class="step"><div class="step-c"><strong>$f'(x)=\frac{2x}{(1-x^2)^2}$</strong>. Zero at $x=0$. Negative for $x<0$, positive for $x>0$ (within each interval). On $(-1,1)$: local min at $x=0$, $f(0)=1$.</div></div>
-<div class="step"><div class="step-c">On outer intervals: always decreasing (or increasing), no extrema there.</div></div>
+<div class="step"><div class="step-c"><strong>Domain:</strong> $x\neq\pm1$. $D_f=\mathbb{R}\setminus\{-1,1\}$.</div></div>
+<div class="step"><div class="step-c"><strong>Limits:</strong> VAs at $x=\pm1$. HA: $y=0$ as $x\to\pm\infty$. On $(-1,1)$: $f(0)=1>0$, $f\to+\infty$ at both edges.</div></div>
+<div class="step"><div class="step-c"><strong>$f'$:</strong> $f'=\frac{2x}{(1-x^2)^2}$. Zero at $x=0$. Local min on $(-1,1)$ at $x=0$, $f(0)=1$.</div></div>
+<div class="step"><div class="step-c"><strong>$f''$:</strong> Inflections depend on second derivative sign.</div></div>
+<div class="step"><div class="step-c"><strong>Sketch:</strong> 3 branches: outer two go $0\to\pm\infty$; middle U-shape with min at $(0,1)$.</div></div>
 </div></div>
 <button class="cb" onclick="tc(this)">&#x1F4C5; May 2026 &mdash; $f(x)=\frac{x}{x^2-1}$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="gw"><div class="gt">f(x) = x / (x&sup2;&minus;1)</div><canvas id="graph-may2026" width="560" height="250"></canvas></div>
+<div class="gw"><div class="gt">f(x) = x/(x&sup2;&minus;1)</div><canvas id="graph-may2026" width="560" height="240"></canvas></div>
 <div class="steps">
-<div class="step"><div class="step-c"><strong>Domain:</strong> $x^2-1\neq0\Rightarrow x\neq\pm1$</div></div>
-<div class="step"><div class="step-c"><strong>Limits:</strong> VAs at $x=\pm1$. $\lim_{x\to\pm\infty}=0$ &rarr; HA $y=0$. Odd function.</div></div>
-<div class="step"><div class="step-c"><strong>$f'(x)=\frac{(x^2-1)-x(2x)}{(x^2-1)^2}=\frac{-x^2-1}{(x^2-1)^2}$</strong>. Since $-x^2-1<0$ always, $f'<0$ everywhere &rarr; strictly decreasing on each interval. No local extrema.</div></div>
-<div class="step"><div class="step-c"><strong>$f''(x)$:</strong> inflection at $x=0$: $f(0)=0$.</div></div>
+<div class="step"><div class="step-c"><strong>Domain:</strong> $x\neq\pm1$</div></div>
+<div class="step"><div class="step-c"><strong>Limits:</strong> VAs at $x=\pm1$. HA: $y=0$. Odd function.</div></div>
+<div class="step"><div class="step-c"><strong>$f'$:</strong> $f'=\frac{-x^2-1}{(x^2-1)^2}<0$ always. Strictly decreasing on each interval. No extrema.</div></div>
+<div class="step"><div class="step-c"><strong>$f''$:</strong> Inflection at $x=0$: $f(0)=0$.</div></div>
+<div class="step"><div class="step-c"><strong>Sketch:</strong> Odd symmetry; 3 strictly decreasing branches.</div></div>
 </div></div>
 </section>
-<section class="page" id="page-exB">
-<h1>Exercise B &ndash; 2D Optimization</h1>
-<div class="card card-blue"><h3>The 6-Step Method</h3><div class="steps">
-<div class="step"><div class="step-c"><strong>Domain $D_g$</strong> &mdash; usually $\mathbb{R}^2$ unless log/sqrt</div></div>
-<div class="step"><div class="step-c"><strong>Gradient $\nabla g$</strong> &mdash; compute partial derivatives $g_x$ and $g_y$</div></div>
-<div class="step"><div class="step-c"><strong>Critical Points</strong> &mdash; solve $g_x=0$ AND $g_y=0$ simultaneously. Find ALL.</div></div>
-<div class="step"><div class="step-c"><strong>Hessian $H$</strong> &mdash; compute $g_{xx}$, $g_{yy}$, $g_{xy}$</div></div>
-<div class="step"><div class="step-c"><strong>Classify</strong> using $\det(H)$ and sign of $g_{xx}$</div></div>
-<div class="step"><div class="step-c"><strong>Taylor</strong> &mdash; 2nd order expansion at each critical point</div></div>
+<section class="page math-content" id="page-exB">
+<div class="page-meta"><span class="page-tag tag-purple">Long Exercise</span></div>
+<h1>Exercise B &ndash; 2D Optimisation</h1>
+<p class="tm">Find and classify all critical points of $g(x,y)$, then write Taylor expansion.</p>
+<div class="card card-blue"><h3>The 6-Step Method</h3><div class="steps"><div class="step"><div class="step-c"><strong>Domain $D_g$</strong> &mdash; usually $\mathbb{R}^2$ unless log/sqrt</div></div><div class="step"><div class="step-c"><strong>Gradient</strong> &mdash; compute $g_x$ and $g_y$</div></div><div class="step"><div class="step-c"><strong>Critical Points</strong> &mdash; solve $g_x=0$ AND $g_y=0$. Find ALL.</div></div><div class="step"><div class="step-c"><strong>Hessian $H$</strong> &mdash; compute $g_{xx}$, $g_{yy}$, $g_{xy}$</div></div><div class="step"><div class="step-c"><strong>Classify</strong> using $\det(H)$ and sign of $g_{xx}$</div></div><div class="step"><div class="step-c"><strong>Taylor 2nd order</strong> at each critical point</div></div></div></div>
+<div class="grid2">
+<div class="dtn root">Compute $\det(H)=g_{xx}g_{yy}-g_{xy}^2$</div>
+<div style="display:flex;flex-direction:column;gap:6px">
+<div class="dtn bn">$\det H<0$ &rarr; <strong class="to">SADDLE POINT</strong></div>
+<div class="dtn by">$\det H>0$ &amp; $g_{xx}>0$ &rarr; <strong class="tg2">LOCAL MIN</strong></div>
+<div class="dtn bn">$\det H>0$ &amp; $g_{xx}<0$ &rarr; <strong class="tr">LOCAL MAX</strong></div>
+<div class="dtn">$\det H=0$ &rarr; INCONCLUSIVE</div>
 </div></div>
-<h2>Classification Decision Tree</h2>
-<div class="dtn root">Evaluate $H$ at critical point $(x^*,y^*)$</div>
-<div class="dtc"><div class="dtn">Compute $\det(H)=g_{xx}g_{yy}-g_{xy}^2$</div>
-<div class="dtc">
-<div class="dtn bn">$\det(H)<0$ &rarr; <strong class="to">SADDLE POINT</strong> (always, no exception)</div>
-<div class="dtn">$\det(H)>0$ &rarr; check $g_{xx}$:</div>
-<div class="dtc"><div class="dtn by">$g_{xx}>0$ &rarr; <strong class="tg2">LOCAL MINIMUM</strong></div>
-<div class="dtn bn">$g_{xx}<0$ &rarr; <strong class="tr">LOCAL MAXIMUM</strong></div></div>
-<div class="dtn">$\det(H)=0$ &rarr; INCONCLUSIVE</div>
-</div></div>
-<h2>Taylor Expansion Formula</h2>
-<div class="fbox">$$g(x,y)\approx g(x^*,y^*)+\frac{1}{2}\left[g_{xx}(x-x^*)^2+2g_{xy}(x-x^*)(y-y^*)+g_{yy}(y-y^*)^2\right]$$</div>
-<div class="warn"><div class="bi">&#x26A0;&#65039;</div><div class="bc">Do NOT forget the <strong>&frac12; factor</strong>. Cross term coefficient is $2g_{xy}$. Linear terms vanish because $(x^*,y^*)$ is a critical point.</div></div>
-<div class="tip"><div class="bi">&#x1F4A1;</div><div class="bc"><strong>Separable Functions $g=f(x)+h(y)$:</strong> $g_{xy}=0$ always &rarr; diagonal Hessian. Solve $g_x=0$ for $x$ only, $g_y=0$ for $y$ only. CPs = all combinations. If each gives 3 solutions &rarr; 9 CPs total!</div></div>
-<h2>All Exercise B Functions &mdash; Fully Solved</h2>
+<div class="big-formula">$$g(x,y)\approx g(x^*,y^*)+\frac{1}{2}\left[g_{xx}(x-x^*)^2+2g_{xy}(x-x^*)(y-y^*)+g_{yy}(y-y^*)^2\right]$$</div>
+<div class="warn"><div class="bi">&#x26A0;&#65039;</div><div class="bc">Do NOT forget the <strong>&frac12; factor</strong>. Cross term coefficient is $2g_{xy}$, not $g_{xy}$.</div></div>
+<div class="tip"><div class="bi">&#x1F4A1;</div><div class="bc"><strong>Separable $g=f(x)+h(y)$:</strong> $g_{xy}=0$ always &rarr; diagonal Hessian. Solve $g_x=0$ independently for $x$, $g_y=0$ for $y$. CPs = all combinations. If each gives 3 roots &rarr; 9 CPs total!</div></div>
+<h2>All Past Exam Exercise B &mdash; Fully Solved</h2>
 <button class="cb" onclick="tc(this)">&#x1F4C5; Jan 2025 &mdash; $g=x^3-3x+y^3-3y$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="grid2"><div class="gw"><div class="gt">Contour: x&sup3;&minus;3x+y&sup3;&minus;3y</div><canvas id="contour-jan2025" width="270" height="270"></canvas></div><div>
-<p><strong>Separable.</strong> $g_x=3x^2-3=3(x^2-1)$, $g_y=3y^2-3=3(y^2-1)$</p>
-<p>CPs: $x=\pm1$, $y=\pm1$ &rarr; 4 CPs: $(\pm1,\pm1)$</p>
-<p>$g_{xx}=6x$, $g_{yy}=6y$, $g_{xy}=0$ (diagonal). $\det H=36xy$.</p>
+<div class="gw"><div class="gt">Contour plot of $g=x^3-3x+y^3-3y$</div><canvas id="contour-jan2025" width="320" height="280"></canvas></div>
+<div class="steps">
+<div class="step"><div class="step-c"><strong>Separable:</strong> $g_x=3(x^2-1)=0\Rightarrow x=\pm1$; $g_y=3(y^2-1)=0\Rightarrow y=\pm1$. Four CPs: $(\pm1,\pm1)$.</div></div>
+<div class="step"><div class="step-c"><strong>Hessian:</strong> $g_{xx}=6x$, $g_{yy}=6y$, $g_{xy}=0$ (diagonal). $\det H=36xy$.</div></div>
+<div class="step"><div class="step-c"><strong>Classify:</strong> $(1,1)$: $\det=36>0,g_{xx}=6>0$ &rarr; <span class="tg2">MIN</span>, $g=-4$. $(-1,-1)$: <span class="tr">MAX</span>, $g=4$. $(1,-1),(−1,1)$: <span class="to">SADDLE</span>, $g=0$.</div></div>
+<div class="step"><div class="step-c"><strong>Taylor at $(1,1)$:</strong> $g\approx-4+\frac{1}{2}[6(x-1)^2+6(y-1)^2]=-4+3(x-1)^2+3(y-1)^2$</div></div>
 </div></div>
-<table><thead><tr><th>CP</th><th>$g_{xx}$</th><th>$g_{yy}$</th><th>$\det H$</th><th>Type</th><th>$g$ value</th></tr></thead><tbody>
-<tr><td>$(1,1)$</td><td>6</td><td>6</td><td>36 &gt; 0</td><td><span class="tg2">MIN</span></td><td>$-4$</td></tr>
-<tr><td>$(-1,-1)$</td><td>&minus;6</td><td>&minus;6</td><td>36 &gt; 0</td><td><span class="tr">MAX</span></td><td>$4$</td></tr>
-<tr><td>$(1,-1)$</td><td>6</td><td>&minus;6</td><td>&minus;36 &lt; 0</td><td><span class="to">SADDLE</span></td><td>$0$</td></tr>
-<tr><td>$(-1,1)$</td><td>&minus;6</td><td>6</td><td>&minus;36 &lt; 0</td><td><span class="to">SADDLE</span></td><td>$0$</td></tr>
-</tbody></table>
-<h4>Taylor at min $(1,1)$:</h4><div class="fbox">$$g\approx-4+\frac{1}{2}[6(x-1)^2+6(y-1)^2]=-4+3(x-1)^2+3(y-1)^2$$</div>
-<h4>Taylor at saddle $(1,-1)$:</h4><div class="fbox">$$g\approx 0+\frac{1}{2}[6(x-1)^2-6(y+1)^2]=3(x-1)^2-3(y+1)^2$$</div>
-</div>
 <button class="cb" onclick="tc(this)">&#x1F4C5; Dec 2025 &mdash; $g=\log(x^2+y^2+1)$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="grid2"><div class="gw"><div class="gt">Contour: log(x&sup2;+y&sup2;+1)</div><canvas id="contour-dec2025" width="270" height="270"></canvas></div><div>
-<p><strong>Domain:</strong> $x^2+y^2+1\geq1>0$ always &rarr; $\mathbb{R}^2$</p>
-<p>$g_x=\frac{2x}{(x^2+y^2+1)\ln 10}$, $g_y=\frac{2y}{(x^2+y^2+1)\ln 10}$</p>
-<p>$\nabla g=0\Rightarrow x=0,y=0$. Only CP: $(0,0)$.</p>
-<p>$g_{xx}=\frac{2}{\ln10}>0$, $g_{yy}=\frac{2}{\ln10}>0$, $g_{xy}=0$ at $(0,0)$.</p>
-<p>$\det H>0$, $g_{xx}>0$ &rarr; <strong class="tg2">GLOBAL MINIMUM</strong> at $(0,0)$. $g(0,0)=\log(1)=0$.</p>
+<div class="gw"><div class="gt">Contour plot of $g=\log(x^2+y^2+1)$</div><canvas id="contour-dec2025" width="320" height="280"></canvas></div>
+<div class="steps">
+<div class="step"><div class="step-c"><strong>Domain:</strong> $x^2+y^2+1\geq1>0$ always. $D=\mathbb{R}^2$.</div></div>
+<div class="step"><div class="step-c"><strong>CPs:</strong> $g_x=\frac{2x}{(x^2+y^2+1)\ln10}=0\Rightarrow x=0$. Same for $y$. Only CP: $(0,0)$.</div></div>
+<div class="step"><div class="step-c"><strong>Classify:</strong> $g_{xx}=\frac{2}{\ln10}>0$, $g_{xy}=0$ at $(0,0)$. $\det H>0$, $g_{xx}>0$ &rarr; <span class="tg2">GLOBAL MIN</span>. $g(0,0)=0$.</div></div>
+<div class="step"><div class="step-c"><strong>Taylor:</strong> $g\approx0+\frac{x^2+y^2}{\ln10}$</div></div>
 </div></div>
-<div class="fbox">$$g\approx 0+\frac{1}{2}\left[\frac{2}{\ln10}x^2+\frac{2}{\ln10}y^2\right]=\frac{x^2+y^2}{\ln10}$$</div>
-</div>
 <button class="cb" onclick="tc(this)">&#x1F4C5; Jan 2026 &mdash; $g=e^{x^2+y^2+1}$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="grid2"><div class="gw"><div class="gt">Contour: e^(x&sup2;+y&sup2;+1)</div><canvas id="contour-jan2026" width="270" height="270"></canvas></div><div>
-<p><strong>Domain:</strong> $\mathbb{R}^2$</p>
-<p>$g_x=2x\,e^{x^2+y^2+1}=0\Rightarrow x=0$. Same for $y$. CP: $(0,0)$.</p>
-<p>$g_{xx}=(2+4x^2)e^{x^2+y^2+1}$. At $(0,0)$: $g_{xx}=2e$. Similarly $g_{yy}=2e$, $g_{xy}=4xy\cdot e^{\ldots}|_{(0,0)}=0$.</p>
-<p>$\det H=4e^2>0$, $g_{xx}=2e>0$ &rarr; <strong class="tg2">GLOBAL MINIMUM</strong>. $g(0,0)=e$.</p>
+<div class="gw"><div class="gt">Contour plot of $g=e^{x^2+y^2+1}$</div><canvas id="contour-jan2026" width="320" height="280"></canvas></div>
+<div class="steps">
+<div class="step"><div class="step-c"><strong>CPs:</strong> $g_x=2x\,e^{x^2+y^2+1}=0\Rightarrow x=0$. CP: $(0,0)$.</div></div>
+<div class="step"><div class="step-c"><strong>Classify:</strong> $g_{xx}=2e,g_{yy}=2e,g_{xy}=0$ at $(0,0)$. $\det H=4e^2>0$ &rarr; <span class="tg2">GLOBAL MIN</span>. $g(0,0)=e$.</div></div>
+<div class="step"><div class="step-c"><strong>Taylor:</strong> $g\approx e+e(x^2+y^2)$</div></div>
 </div></div>
-<div class="fbox">$$g\approx e+\frac{1}{2}[2e\cdot x^2+2e\cdot y^2]=e+e(x^2+y^2)$$</div>
-</div>
 <button class="cb" onclick="tc(this)">&#x1F4C5; Mar 2026 &mdash; $g=\log(1-x^2-y^2)$ <span>&#9660;</span></button>
 <div class="cc">
-<p><strong>Domain:</strong> $1-x^2-y^2>0\Rightarrow x^2+y^2<1$ (open unit disk)</p>
-<p>$g_x=\frac{-2x}{(1-x^2-y^2)\ln10}=0\Rightarrow x=0$. Similarly $y=0$. CP: $(0,0)$.</p>
-<p>At $(0,0)$: $g_{xx}=\frac{-2}{\ln10}<0$, $g_{yy}=\frac{-2}{\ln10}<0$, $g_{xy}=0$. $\det H>0$, $g_{xx}<0$ &rarr; <strong class="tr">GLOBAL MAXIMUM</strong>. $g(0,0)=\log(1)=0$.</p>
-<div class="fbox">$$g\approx 0+\frac{1}{2}\left[\frac{-2}{\ln10}x^2+\frac{-2}{\ln10}y^2\right]=\frac{-(x^2+y^2)}{\ln10}$$</div>
-</div>
+<div class="gw"><div class="gt">Contour plot of $g=\log(1-x^2-y^2)$</div><canvas id="contour-mar2026" width="320" height="280"></canvas></div>
+<div class="steps">
+<div class="step"><div class="step-c"><strong>Domain:</strong> $1-x^2-y^2>0\Rightarrow x^2+y^2<1$ (open unit disk).</div></div>
+<div class="step"><div class="step-c"><strong>CPs:</strong> $g_x=\frac{-2x}{(1-x^2-y^2)\ln10}=0\Rightarrow x=0$. CP: $(0,0)$.</div></div>
+<div class="step"><div class="step-c"><strong>Classify:</strong> $g_{xx}=\frac{-2}{\ln10}<0$. $\det H>0$, $g_{xx}<0$ &rarr; <span class="tr">GLOBAL MAX</span>. $g(0,0)=0$.</div></div>
+<div class="step"><div class="step-c"><strong>Taylor:</strong> $g\approx-\frac{x^2+y^2}{\ln10}$</div></div>
+</div></div>
 <button class="cb" onclick="tc(this)">&#x1F4C5; May 2026 &mdash; $g=x^2+y^2-2x-4y$ <span>&#9660;</span></button>
 <div class="cc">
-<div class="grid2"><div class="gw"><div class="gt">Contour: x&sup2;+y&sup2;&minus;2x&minus;4y</div><canvas id="contour-may2026" width="270" height="270"></canvas></div><div>
-<p><strong>Domain:</strong> $\mathbb{R}^2$</p>
-<p>$g_x=2x-2=0\Rightarrow x=1$. $g_y=2y-4=0\Rightarrow y=2$. CP: $(1,2)$.</p>
-<p>$g_{xx}=2$, $g_{yy}=2$, $g_{xy}=0$. $H=\begin{pmatrix}2&0\\0&2\end{pmatrix}$. $\det H=4>0$, $g_{xx}=2>0$.</p>
-<p>&rarr; <strong class="tg2">GLOBAL MINIMUM</strong>. $g(1,2)=1+4-2-8=-5$.</p>
+<div class="gw"><div class="gt">Contour plot of $g=x^2+y^2-2x-4y$</div><canvas id="contour-may2026" width="320" height="280"></canvas></div>
+<div class="steps">
+<div class="step"><div class="step-c"><strong>CPs:</strong> $g_x=2x-2=0\Rightarrow x=1$; $g_y=2y-4=0\Rightarrow y=2$. CP: $(1,2)$.</div></div>
+<div class="step"><div class="step-c"><strong>Classify:</strong> $H=\text{diag}(2,2)$. $\det=4>0,g_{xx}=2>0$ &rarr; <span class="tg2">GLOBAL MIN</span>. $g(1,2)=-5$.</div></div>
+<div class="step"><div class="step-c"><strong>Taylor:</strong> $g\approx-5+(x-1)^2+(y-2)^2$</div></div>
 </div></div>
-<div class="fbox">$$g\approx-5+\frac{1}{2}[2(x-1)^2+2(y-2)^2]=-5+(x-1)^2+(y-2)^2$$</div>
-</div>
-<button class="cb" onclick="tc(this)">&#x1F4C5; Nov 2025 &mdash; $g=(x-1)^2+(y-1)^2+x^3+y^3+1$ <span>&#9660;</span></button>
-<div class="cc">
-<p><strong>Domain:</strong> $\mathbb{R}^2$. $g_x=2(x-1)+3x^2=3x^2+2x-2=0\Rightarrow x=\frac{-2\pm\sqrt{4+24}}{6}=\frac{-2\pm\sqrt{28}}{6}$</p>
-<p>Two $x$-values: $x_1=\frac{-1+\sqrt{7}}{3}\approx0.549$, $x_2=\frac{-1-\sqrt{7}}{3}\approx-1.215$. By symmetry same for $y$. Total 4 CPs.</p>
-<p>$g_{xx}=2+6x$, $g_{yy}=2+6y$, $g_{xy}=0$. Classify each by sign of $g_{xx}$ and $\det H$.</p>
-</div>
 <button class="cb" onclick="tc(this)">&#x1F4C5; May 2025 &mdash; $g=\frac{x^3}{3}+\frac{y^3}{3}-x^2-y^2-3xy+2$ <span>&#9660;</span></button>
 <div class="cc">
-<p>NOT separable ($-3xy$ cross term!).</p>
-<p>$g_x=x^2-2x-3y=0$ &hellip;(1). $g_y=y^2-2y-3x=0$ &hellip;(2).</p>
-<p><strong>Symmetry trick:</strong> try $x=y$. Substitute into (1): $x^2-2x-3x=0\Rightarrow x^2-5x=0\Rightarrow x(x-5)=0$.</p>
-<p>CPs: $(0,0)$ and $(5,5)$.</p>
-<p>$g_{xx}=2x-2$, $g_{yy}=2y-2$, $g_{xy}=-3$.</p>
-<table><thead><tr><th>CP</th><th>$g_{xx}$</th><th>$g_{yy}$</th><th>$g_{xy}$</th><th>$\det H$</th><th>Type</th></tr></thead><tbody>
-<tr><td>$(0,0)$</td><td>&minus;2</td><td>&minus;2</td><td>&minus;3</td><td>$4-9=-5<0$</td><td><span class="to">SADDLE</span></td></tr>
-<tr><td>$(5,5)$</td><td>8</td><td>8</td><td>&minus;3</td><td>$64-9=55>0$</td><td><span class="tg2">MIN</span></td></tr>
-</tbody></table>
-<div class="fbox">$$\text{At }(5,5):\quad g\approx g(5,5)+\frac{1}{2}[8(x-5)^2+2(-3)(x-5)(y-5)+8(y-5)^2]$$</div>
-</div>
+<div class="gw"><div class="gt">Contour plot of $g=\frac{x^3}{3}+\frac{y^3}{3}-x^2-y^2-3xy+2$</div><canvas id="contour-may2025" width="320" height="280"></canvas></div>
+<div class="steps">
+<div class="step"><div class="step-c"><strong>NOT separable:</strong> Cross term $-3xy$ means $g_{xy}=-3\neq0$.</div></div>
+<div class="step"><div class="step-c"><strong>CPs:</strong> $g_x=x^2-2x-3y=0$, $g_y=y^2-2y-3x=0$. Try $x=y$: $x^2-5x=0\Rightarrow x=0,5$. CPs: $(0,0)$ and $(5,5)$.</div></div>
+<div class="step"><div class="step-c"><strong>Classify:</strong> $(0,0)$: $\det H=4-9=-5<0$ &rarr; <span class="to">SADDLE</span>. $(5,5)$: $g_{xx}=8,g_{yy}=8,g_{xy}=-3$, $\det=64-9=55>0,g_{xx}>0$ &rarr; <span class="tg2">MIN</span>.</div></div>
+<div class="step"><div class="step-c"><strong>Taylor at $(5,5)$:</strong> $g(5,5)+\frac{1}{2}[8(x-5)^2+2(-3)(x-5)(y-5)+8(y-5)^2]$</div></div>
+</div></div>
 </section>
-<section class="page" id="page-exams">
+<section class="page math-content" id="page-exams">
+<div class="page-meta"><span class="page-tag tag-orange">Reference</span></div>
 <h1>&#x1F4C4; Past Exams &mdash; Pattern Analysis</h1>
-<div class="warn"><div class="bi">&#x26A0;&#65039;</div><div class="bc"><strong>THE PATTERN:</strong> The professor changes numbers/functions but keeps the same question structure every exam. Recognise the type &rarr; apply the method &rarr; full marks.</div></div>
+<div class="warn"><div class="bi">&#x26A0;&#65039;</div><div class="bc"><strong>THE PATTERN:</strong> The professor changes numbers/functions but keeps the same structure every exam. Recognise the type &rarr; apply the method &rarr; full marks.</div></div>
 <h2>Quick Question Patterns Across All Exams</h2>
-<table><thead><tr><th>Q</th><th>Pattern</th><th>Method</th><th>Frequency</th></tr></thead><tbody>
-<tr><td><strong>Q1</strong></td><td>Two matrices, compute product</td><td>Write sizes, identify case (1/2/3), compute</td><td><span class="badge bg">Every exam</span></td></tr>
-<tr><td><strong>Q2</strong></td><td>Evaluate $f(x_0)$ where $x_0$ involves ln/log</td><td>Evaluate $x_0$ first (ln1=0), then plug in, cancel $e^{\ln}$ if needed</td><td><span class="badge bg">Every exam</span></td></tr>
-<tr><td><strong>Q3</strong></td><td>Domain of function with sqrt/log/fraction or 2D</td><td>Apply 4 rules, sign chart for polynomials</td><td><span class="badge bg">Every exam</span></td></tr>
-<tr><td><strong>Q4</strong></td><td>Derivative of quotient or ln(e^x) type</td><td>Simplify first! Then quotient/chain rule</td><td><span class="badge bg">Every exam</span></td></tr>
-<tr><td><strong>Q5</strong></td><td>Second derivative of $e^{f(x)}$</td><td>Find $f'$ first, apply product rule for $f''$</td><td><span class="badge bg">Every exam</span></td></tr>
-<tr><td><strong>Q6</strong></td><td>Det &amp; trace of 3&times;3 matrix</td><td>Check zero rows first, expand along sparsest row/col</td><td><span class="badge bg">Every exam</span></td></tr>
-<tr><td><strong>Q7</strong></td><td>Find minimum of polynomial</td><td>Vertex formula for quadratic; $f'=0$ for higher degree</td><td><span class="badge bg">Every exam</span></td></tr>
-<tr><td><strong>Q8</strong></td><td>Eigenvalues of Hessian at a point</td><td>Compute $H$, use diagonal shortcut if $f_{xy}=0$</td><td><span class="badge bg">Every exam</span></td></tr>
-</tbody></table>
-<h2>Exercise A Function Types Seen</h2>
-<table><thead><tr><th>Exam</th><th>f(x)</th><th>Domain</th><th>Key Features</th></tr></thead><tbody>
-<tr><td>Jan 2025</td><td>$\frac{5x^2-2x}{e^x}$</td><td>$\mathbb{R}$</td><td>HA at $y=0$, local max+min</td></tr>
-<tr><td>Mar 2025</td><td>$x^4-2x^3+1$</td><td>$\mathbb{R}$</td><td>Polynomial, one local min at $x=3/2$</td></tr>
-<tr><td>Dec 2024</td><td>$\ln\!\left(\frac{2-x}{x-4}\right)$</td><td>$(2,4)$</td><td>Two VAs, strictly decreasing</td></tr>
+<div class="table-wrap"><table><thead><tr><th>Q</th><th>Pattern</th><th>Method</th></tr></thead><tbody>
+<tr><td><strong>Q1</strong></td><td>Two matrices, compute product</td><td>Write sizes, identify case, compute</td></tr>
+<tr><td><strong>Q2</strong></td><td>Evaluate $f(x_0)$ where $x_0$ involves ln/log</td><td>Evaluate $x_0$ first, plug in, CANCEL $e^{\ln}$</td></tr>
+<tr><td><strong>Q3</strong></td><td>Domain of function with sqrt/log/fraction or 2D</td><td>4 rules, sign chart for polynomials</td></tr>
+<tr><td><strong>Q4</strong></td><td>Derivative of quotient or $\ln(e^x)$ type</td><td>Simplify first! Then quotient/chain rule</td></tr>
+<tr><td><strong>Q5</strong></td><td>Second derivative of $e^{f(x)}$</td><td>Find $f'$ first, product rule for $f''$</td></tr>
+<tr><td><strong>Q6</strong></td><td>Det &amp; trace of 3&times;3 matrix</td><td>Check zero rows first, expand along sparsest row/col</td></tr>
+<tr><td><strong>Q7</strong></td><td>Minimum of polynomial</td><td>Vertex formula for quadratic; $f'=0$ for higher degree</td></tr>
+<tr><td><strong>Q8</strong></td><td>Eigenvalues of Hessian</td><td>Compute $H$, diagonal shortcut if $f_{xy}=0$</td></tr>
+</tbody></table></div>
+<h2>Exercise A Function Types</h2>
+<div class="table-wrap"><table><thead><tr><th>Exam</th><th>f(x)</th><th>Domain</th><th>Key Feature</th></tr></thead><tbody>
+<tr><td>Jan 2025</td><td>$\frac{5x^2-2x}{e^x}$</td><td>$\mathbb{R}$</td><td>HA at 0, local max+min</td></tr>
+<tr><td>Mar 2025</td><td>$x^4-2x^3+1$</td><td>$\mathbb{R}$</td><td>Local min at $x=3/2$</td></tr>
 <tr><td>Nov 2025</td><td>$\ln\!\left(\frac{4-x}{x-2}\right)$</td><td>$(2,4)$</td><td>Two VAs, strictly decreasing</td></tr>
 <tr><td>Dec 2025</td><td>$x^5-x^3$</td><td>$\mathbb{R}$</td><td>Odd function, local max+min</td></tr>
-<tr><td>Jan 2026</td><td>$\frac{1}{1-x^2}$</td><td>$\mathbb{R}\setminus\{\pm1\}$</td><td>Two VAs, HA $y=0$, min at $x=0$</td></tr>
+<tr><td>Jan 2026</td><td>$\frac{1}{1-x^2}$</td><td>$\mathbb{R}\setminus\{\pm1\}$</td><td>Two VAs, min at $(0,1)$</td></tr>
 <tr><td>Mar 2026</td><td>$\frac{1}{1-x^2}$</td><td>$\mathbb{R}\setminus\{\pm1\}$</td><td>Same as Jan 2026</td></tr>
-<tr><td>May 2026</td><td>$\frac{x}{x^2-1}$</td><td>$\mathbb{R}\setminus\{\pm1\}$</td><td>Two VAs, HA $y=0$, odd, no extrema</td></tr>
-</tbody></table>
-<h2>Exercise B Function Types Seen</h2>
-<table><thead><tr><th>Exam</th><th>g(x,y)</th><th>CPs</th><th>Types</th><th>Hessian</th></tr></thead><tbody>
-<tr><td>Jan 2025</td><td>$x^3-3x+y^3-3y$</td><td>4: $(\pm1,\pm1)$</td><td>1 min, 1 max, 2 saddles</td><td>Diagonal (separable)</td></tr>
-<tr><td>Dec 2024</td><td>$x^3-3x+y^4-4y^2$</td><td>6 total</td><td>2 min, 1 max, 3 saddles</td><td>Diagonal (separable)</td></tr>
-<tr><td>Mar/Dec 2025</td><td>$x^4-4x^2+y^4-4y^2$</td><td>9 total</td><td>1 max, 4 mins, 4 saddles</td><td>Diagonal (separable)</td></tr>
-<tr><td>May 2025</td><td>$\frac{x^3}{3}+\frac{y^3}{3}-x^2-y^2-3xy+2$</td><td>2: $(0,0),(5,5)$</td><td>1 saddle, 1 min</td><td>NOT diagonal ($g_{xy}=-3$)</td></tr>
-<tr><td>Nov 2025</td><td>$(x-1)^2+(y-1)^2+x^3+y^3+1$</td><td>4</td><td>Mixed</td><td>Diagonal (separable)</td></tr>
-<tr><td>Dec 2025</td><td>$\log(x^2+y^2+1)$</td><td>1: $(0,0)$</td><td>Global min</td><td>Diagonal</td></tr>
-<tr><td>Jan 2026</td><td>$e^{x^2+y^2+1}$</td><td>1: $(0,0)$</td><td>Global min</td><td>Diagonal</td></tr>
-<tr><td>Mar 2026</td><td>$\log(1-x^2-y^2)$</td><td>1: $(0,0)$</td><td>Global max (open disk)</td><td>Diagonal</td></tr>
-<tr><td>May 2026</td><td>$x^2+y^2-2x-4y$</td><td>1: $(1,2)$</td><td>Global min</td><td>Constant diagonal</td></tr>
-</tbody></table>
-<h2>Prediction: What Could Come Next</h2>
-<div class="card card-purple">
-<p>Based on patterns, the next exam Exercise A is likely:</p><ul>
-<li>A ratio function with vertical asymptotes like $\frac{p(x)}{q(x)}$ where $q$ has real roots</li>
-<li>Or a $\ln$ of a ratio &mdash; strictly monotone on a bounded domain</li>
-<li>Or a polynomial of degree 4&ndash;6 with inflection points</li>
-</ul>
-<p>Exercise B is likely:</p><ul>
-<li>Separable $f(x)+h(y)$ with 4 or 9 critical points (diagonal Hessian)</li>
-<li>Or a simple $e^{\text{quadratic}}$ or $\log(\text{quadratic})$ with 1 global min/max</li>
-</ul></div>
+<tr><td>May 2026</td><td>$\frac{x}{x^2-1}$</td><td>$\mathbb{R}\setminus\{\pm1\}$</td><td>Odd, no extrema</td></tr>
+</tbody></table></div>
+<h2>Exercise B Function Types</h2>
+<div class="table-wrap"><table><thead><tr><th>Exam</th><th>g(x,y)</th><th>CPs</th><th>Hessian</th></tr></thead><tbody>
+<tr><td>Jan 2025</td><td>$x^3-3x+y^3-3y$</td><td>4: 1 min, 1 max, 2 saddles</td><td>Diagonal</td></tr>
+<tr><td>May 2025</td><td>$\frac{x^3}{3}+\frac{y^3}{3}-x^2-y^2-3xy+2$</td><td>2: 1 saddle, 1 min</td><td>NOT diagonal ($g_{xy}=-3$)</td></tr>
+<tr><td>Mar 2025</td><td>$x^4-4x^2+y^4-4y^2$</td><td>9: varied</td><td>Diagonal</td></tr>
+<tr><td>Dec 2025</td><td>$\log(x^2+y^2+1)$</td><td>1: global min</td><td>Diagonal</td></tr>
+<tr><td>Jan 2026</td><td>$e^{x^2+y^2+1}$</td><td>1: global min</td><td>Diagonal</td></tr>
+<tr><td>Mar 2026</td><td>$\log(1-x^2-y^2)$</td><td>1: global max</td><td>Diagonal</td></tr>
+<tr><td>May 2026</td><td>$x^2+y^2-2x-4y$</td><td>1: global min</td><td>Constant diagonal</td></tr>
+</tbody></table></div>
 </section>
-<section class="page" id="page-cs">
-<h1>&#x26A1; Cheat Sheet &mdash; Read This Morning of Exam</h1>
-<h2>12 Things You Must Know Cold</h2>
+<section class="page math-content" id="page-cs">
+<div class="page-meta"><span class="page-tag tag-red">Reference</span></div>
+<h1>&#x26A1; Cheat Sheet</h1>
+<p class="tm">Read this the morning of the exam. 12 things you must know cold.</p>
 <div class="card card-blue">
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">1</span>&nbsp;MATRIX MULT: $(m\times n)\cdot(n\times p)=(m\times p)$. Entry$(i,j)=$row $i$ DOT col $j$.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">2</span>&nbsp;$\ln(1)=0$, $e^0=1$, $e^{\ln x}=x$, $\ln(e^x)=x$. These CANCEL. Use in Q2 and Q4 FIRST.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">3</span>&nbsp;DOMAIN: sqrt needs $\geq0$, log needs $>0$, fraction needs $\neq0$, $1/\ln$: $>0$ AND $\neq1$.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">4</span>&nbsp;QUOTIENT: $(u'v-uv')/v^2$. PRODUCT: $u'v+uv'$. CHAIN: $f'(g)\cdot g'$. SIMPLIFY $\ln(e^x)$ FIRST.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">5</span>&nbsp;SECOND DERIV: $f'(x)$ is usually a product &rarr; use PRODUCT RULE to get $f''(x)$.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">6</span>&nbsp;TRACE = sum of diagonal. DETERMINANT: check zero rows FIRST ($\det=0$ instant).</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">7</span>&nbsp;LOCAL MIN/MAX: $f'=0$, then $f''>0\Rightarrow$ min, $f''<0\Rightarrow$ max. Quadratic: $x^*=-b/(2a)$.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">8</span>&nbsp;HESSIAN: $H=\begin{pmatrix}g_{xx}&g_{xy}\\g_{xy}&g_{yy}\end{pmatrix}$. Diagonal if $g_{xy}=0$.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">9</span>&nbsp;EXERCISE A: Domain &rarr; Limits &rarr; $f'$ sign chart &rarr; $f''$ sign chart &rarr; Sketch. Always.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">10</span>&nbsp;EXERCISE B: $\nabla g=0$ gives CPs. $H$ at each CP. $\det>0,g_{xx}>0$=MIN; $\det>0,g_{xx}<0$=MAX; $\det<0$=SADDLE.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">11</span>&nbsp;TAYLOR: $g(x^*,y^*)+\frac{1}{2}[g_{xx}\Delta x^2+2g_{xy}\Delta x\Delta y+g_{yy}\Delta y^2]$.</div>
-<div class="dtn" style="margin:4px 0"><span style="background:var(--accent);color:#000;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;flex-shrink:0">12</span>&nbsp;SEPARABLE $g=f(x)+h(y)$: $g_{xy}=0$ always. Diagonal $H$. If each factor has 3 roots &rarr; 9 CPs.</div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">1</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Matrix Mult:</strong> $(m\times n)\cdot(n\times p)=(m\times p)$. Entry$(i,j)$ = row $i$ DOT col $j$.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">2</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Log/Exp cancel:</strong> $e^{\ln x}=x$, $\ln(e^x)=x$, $\ln 1=0$, $e^0=1$. ALWAYS simplify before calc.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">3</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Domain rules:</strong> sqrt $\geq0$; log $>0$; fraction $\neq0$; $1/\ln$: arg $>0$ AND $\neq1$.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">4</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Quotient rule:</strong> $(u/v)'=(u'v-uv')/v^2$. MINUS in numerator.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">5</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Product rule:</strong> $(uv)'=u'v+uv'$. Use for $f''$ when $f'$ is a product.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">6</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Key derivs:</strong> $[e^u]'=e^u u'$; $[\ln u]'=u'/u$; $[\log u]'=u'/(u\ln10)$.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">7</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Det shortcuts:</strong> Zero row/col: $\det=0$. Triangular: $\det$ = product of diagonal.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">8</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">1D min/max:</strong> $f'=0$, then $f''>0\Rightarrow$ min, $f''<0\Rightarrow$ max. Quadratic: $x^*=-b/2a$.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">9</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Exercise A:</strong> Domain &rarr; Limits/Asymptotes &rarr; $f'$ sign &rarr; $f''$ sign &rarr; Sketch.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">10</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Exercise B:</strong> $\nabla g=0$ for CPs. $\det H>0,g_{xx}>0$=MIN; $\det H>0,g_{xx}<0$=MAX; $\det H<0$=SADDLE.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">11</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Taylor 2D:</strong> $g(x^*,y^*)+\frac{1}{2}[g_{xx}\Delta x^2+2g_{xy}\Delta x\Delta y+g_{yy}\Delta y^2]$. Never forget $\frac{1}{2}$.</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--border)"><span style="background:var(--blue);color:#000;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0">12</span><div style="font-size:.875rem;color:var(--text2)"><strong style="color:var(--text)">Separable:</strong> $g=f(x)+h(y)\Rightarrow g_{xy}=0$. Diagonal $H$. If 3 $x$-roots $\times$ 3 $y$-roots = 9 CPs.</div></div>
 </div>
-<h2>The 10 Biggest Exam Mistakes</h2>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>NOT simplifying $\ln(e^x)=x$ or $e^{\ln x}=x$ before differentiating</strong>ALWAYS simplify first</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Using $+$ instead of $-$ in quotient rule numerator</strong>It is MINUS: $(u'v-uv')/v^2$</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Not using product rule for $f''(x)$</strong>$f'(x)$ is almost always a product</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Not checking for zero rows in determinant</strong>Zero row &rarr; $\det=0$ instantly</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Finding only some CPs in Exercise B</strong>If $g_x=0$ has 3 solutions and $g_y=0$ has 3 &rarr; 9 CPs</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>$\det>0\Rightarrow$ minimum without checking $g_{xx}$</strong>Need $\det>0$ AND $g_{xx}>0$ for min</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Forgetting the $\frac{1}{2}$ factor in Taylor</strong>Taylor is $g+\frac{1}{2}[\ldots]$, not $g+[\ldots]$</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Using $\geq$ instead of $>$ for log domain</strong>log needs strictly positive</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Stopping after finding one critical point</strong>Check ALL critical points</div></div>
-<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Computing eigenvalues when $H$ is diagonal</strong>Just read the diagonal entries!</div></div>
-<h2>Quick Formula Reference</h2>
-<table><thead><tr><th>Formula</th><th>Expression</th></tr></thead><tbody>
-<tr><td>$\det\begin{pmatrix}a&b\\c&d\end{pmatrix}$</td><td><code>$ad-bc$</code></td></tr>
-<tr><td>Eigenvalues 2&times;2</td><td><code>$\frac{\text{tr}\pm\sqrt{\text{tr}^2-4\det}}{2}$</code></td></tr>
-<tr><td>Diagonal $H$ eigenvalues</td><td><code>Just read diagonal entries</code></td></tr>
-<tr><td>$\frac{d}{dx}[e^{kx^2}]$</td><td><code>$2kx\cdot e^{kx^2}$</code></td></tr>
-<tr><td>$\frac{d^2}{dx^2}[e^{kx^2}]$</td><td><code>$e^{kx^2}(4k^2x^2+2k)$</code></td></tr>
-<tr><td>$\frac{d}{dx}[\ln f(x)]$</td><td><code>$f'(x)/f(x)$</code></td></tr>
-<tr><td>$\frac{d}{dx}[\log f(x)]$</td><td><code>$f'(x)/(f(x)\ln 10)$</code></td></tr>
-<tr><td>Horizontal asymptote (poly/poly)</td><td><code>Leading coeff ratio if same degree; 0 if lower top</code></td></tr>
-<tr><td>Taylor 2D 2nd order</td><td><code>$g(x^*,y^*)+\frac{1}{2}[g_{xx}\Delta x^2+2g_{xy}\Delta x\Delta y+g_{yy}\Delta y^2]$</code></td></tr>
-<tr><td>Separable $g=f(x)+h(y)$</td><td><code>$g_{xy}=0$; diagonal $H$; CPs = all $x$-sols $\times$ all $y$-sols</code></td></tr>
-</tbody></table>
+<h2>Top 8 Mistakes to Avoid</h2>
+<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>NOT simplifying $\ln(e^x)=x$ before differentiating</strong>Fix: Simplify first, every time</div></div>
+<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>$+$ instead of $-$ in quotient rule</strong>Fix: $(u'v - uv')/v^2$ &mdash; it is MINUS</div></div>
+<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>No product rule for $f''(x)$</strong>Fix: $f'(x)$ is almost always a product</div></div>
+<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Not checking zero rows for determinant</strong>Fix: Zero row &rarr; $\det=0$ instantly</div></div>
+<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Missing critical points in Exercise B</strong>Fix: If $g_x=0$ has 3 sols AND $g_y=0$ has 3 &rarr; 9 CPs</div></div>
+<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>$\det>0$ means min without checking $g_{xx}$</strong>Fix: Need $\det>0$ AND $g_{xx}>0$ for min</div></div>
+<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>Forgetting $\frac{1}{2}$ in Taylor</strong>Fix: $g+\frac{1}{2}[\ldots]$ not $g+[\ldots]$</div></div>
+<div class="danger"><div class="bi">&#x274C;</div><div class="bc"><strong>$\geq$ instead of $>$ for log domain</strong>Fix: log needs strictly positive</div></div>
 </section>
 </main>
 <script>
-
-// ── UTILITY ──
-function axes(ctx,W,H,xmin,xmax,ymin,ymax){
-  const pad=44;
-  const sx=x=>pad+(x-xmin)/(xmax-xmin)*(W-2*pad);
-  const sy=y=>H-pad-(y-ymin)/(ymax-ymin)*(H-2*pad);
-  ctx.clearRect(0,0,W,H);
-  ctx.strokeStyle='#21262d';ctx.lineWidth=1;
-  for(let x=Math.ceil(xmin);x<=xmax;x++){ctx.beginPath();ctx.moveTo(sx(x),pad);ctx.lineTo(sx(x),H-pad);ctx.stroke();}
-  for(let y=Math.ceil(ymin);y<=ymax;y++){ctx.beginPath();ctx.moveTo(pad,sy(y));ctx.lineTo(W-pad,sy(y));ctx.stroke();}
-  ctx.strokeStyle='#484f58';ctx.lineWidth=1.5;
-  if(ymin<0&&ymax>0){ctx.beginPath();ctx.moveTo(pad,sy(0));ctx.lineTo(W-pad,sy(0));ctx.stroke();}
-  if(xmin<0&&xmax>0){ctx.beginPath();ctx.moveTo(sx(0),pad);ctx.lineTo(sx(0),H-pad);ctx.stroke();}
-  ctx.fillStyle='#8b949e';ctx.font='10px Inter,sans-serif';ctx.textAlign='center';
-  for(let x=Math.ceil(xmin);x<=Math.floor(xmax);x++){if(x===0)continue;ctx.fillText(x,sx(x),Math.min(sy(0)+13,H-pad+13));}
-  ctx.textAlign='right';
-  for(let y=Math.ceil(ymin);y<=Math.floor(ymax);y++){if(y===0)continue;ctx.fillText(y,Math.max(sx(0)-4,pad+4),sy(y)+4);}
-  return{sx,sy,pad};
-}
-function plot(ctx,fn,xmin,xmax,ymin,ymax,sx,sy,color,lw){
-  ctx.strokeStyle=color||'#58a6ff';ctx.lineWidth=lw||2.5;ctx.beginPath();
-  let started=false;
-  for(let i=0;i<=700;i++){
-    const x=xmin+i/700*(xmax-xmin);
-    let y;try{y=fn(x);}catch(e){started=false;continue;}
-    if(!isFinite(y)||isNaN(y)||y<ymin-100||y>ymax+100){started=false;continue;}
-    const px=sx(x),py=sy(y);
-    if(!started){ctx.moveTo(px,py);started=true;}else{ctx.lineTo(px,py);}
-  }ctx.stroke();
-}
-function vline(ctx,sx,sy,x,W,H,pad){
-  ctx.strokeStyle='#f7816677';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
-  ctx.beginPath();ctx.moveTo(sx(x),pad);ctx.lineTo(sx(x),H-pad);ctx.stroke();ctx.setLineDash([]);
-}
-function hline(ctx,sx,sy,y,W,H,pad){
-  ctx.strokeStyle='#f7816677';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
-  ctx.beginPath();ctx.moveTo(pad,sy(y));ctx.lineTo(W-pad,sy(y));ctx.stroke();ctx.setLineDash([]);
-}
-function dot(ctx,sx,sy,x,y,color,label){
-  ctx.fillStyle=color||'#f85149';ctx.beginPath();ctx.arc(sx(x),sy(y),5,0,2*Math.PI);ctx.fill();
-  if(label){ctx.fillStyle='#e6edf3';ctx.font='11px Inter,sans-serif';ctx.textAlign='left';ctx.fillText(label,sx(x)+7,sy(y)-5);}
+// ─── NAVIGATION ────────────────────────────────────────────────────
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.sb-link').forEach(s => s.classList.remove('active'));
+  const pg = document.getElementById('page-' + id);
+  if (pg) {
+    pg.classList.add('active');
+    // Typeset only the visible page (performance!)
+    if (window.MathJax) MathJax.typesetPromise([pg]).then(() => drawGraphsForPage(id));
+    else drawGraphsForPage(id);
+  }
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.sb-link').forEach(s => {
+    if (s.getAttribute('onclick') && s.getAttribute('onclick').includes("'" + id + "'"))
+      s.classList.add('active');
+  });
+  window.scrollTo(0, 0);
+  closeSidebarOnMobile();
 }
 
-function initGraphs(){
+// ─── SIDEBAR ───────────────────────────────────────────────────────
+function toggleSidebar() {
+  const sb = document.getElementById('sidebar');
+  const ov = document.getElementById('sidebar-overlay');
+  sb.classList.toggle('open');
+  ov.classList.toggle('show');
+}
+function closeSidebarOnMobile() {
+  if (window.innerWidth <= 860) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('show');
+  }
+}
+
+// ─── ACCORDIONS ────────────────────────────────────────────────────
+function tq(header) {
+  const body = header.nextElementSibling;
+  const chev = header.querySelector('.chev');
+  body.classList.toggle('open');
+  if (chev) chev.classList.toggle('open');
+  if (body.classList.contains('open') && window.MathJax) MathJax.typesetPromise([body]);
+}
+function tc(btn) {
+  const cc = btn.nextElementSibling;
+  const arrow = btn.querySelector('span');
+  btn.classList.toggle('open');
+  cc.classList.toggle('open');
+  if (arrow) arrow.textContent = cc.classList.contains('open') ? '▲' : '▼';
+  if (cc.classList.contains('open')) {
+    if (window.MathJax) MathJax.typesetPromise([cc]);
+    setTimeout(initGraphs, 150);
+  }
+}
+
+// ─── CANVAS UTILS ──────────────────────────────────────────────────
+function axes(ctx, W, H, xmin, xmax, ymin, ymax) {
+  const pad = 40;
+  const sx = x => pad + (x - xmin) / (xmax - xmin) * (W - 2 * pad);
+  const sy = y => H - pad - (y - ymin) / (ymax - ymin) * (H - 2 * pad);
+  ctx.clearRect(0, 0, W, H);
+  // grid
+  ctx.strokeStyle = '#21262d'; ctx.lineWidth = 1;
+  for (let x = Math.ceil(xmin); x <= xmax; x++) {
+    ctx.beginPath(); ctx.moveTo(sx(x), pad); ctx.lineTo(sx(x), H - pad); ctx.stroke();
+  }
+  for (let y = Math.ceil(ymin); y <= ymax; y++) {
+    ctx.beginPath(); ctx.moveTo(pad, sy(y)); ctx.lineTo(W - pad, sy(y)); ctx.stroke();
+  }
+  // axes
+  ctx.strokeStyle = '#484f58'; ctx.lineWidth = 1.5;
+  if (ymin < 0 && ymax > 0) { ctx.beginPath(); ctx.moveTo(pad, sy(0)); ctx.lineTo(W - pad, sy(0)); ctx.stroke(); }
+  if (xmin < 0 && xmax > 0) { ctx.beginPath(); ctx.moveTo(sx(0), pad); ctx.lineTo(sx(0), H - pad); ctx.stroke(); }
+  // labels
+  ctx.fillStyle = '#8b949e'; ctx.font = '10px Inter,sans-serif'; ctx.textAlign = 'center';
+  for (let x = Math.ceil(xmin); x <= Math.floor(xmax); x++) {
+    if (x === 0) continue;
+    ctx.fillText(x, sx(x), Math.min(sy(0) + 13, H - pad + 13));
+  }
+  ctx.textAlign = 'right';
+  for (let y = Math.ceil(ymin); y <= Math.floor(ymax); y++) {
+    if (y === 0) continue;
+    ctx.fillText(y, Math.max(sx(0) - 4, pad + 4), sy(y) + 4);
+  }
+  return { sx, sy, pad };
+}
+
+function plot(ctx, fn, xmin, xmax, ymin, ymax, sx, sy, color, lw) {
+  ctx.strokeStyle = color || '#58a6ff'; ctx.lineWidth = lw || 2.5; ctx.beginPath();
+  let started = false;
+  for (let i = 0; i <= 800; i++) {
+    const x = xmin + i / 800 * (xmax - xmin);
+    let y; try { y = fn(x); } catch (e) { started = false; continue; }
+    if (!isFinite(y) || isNaN(y) || y < ymin - 80 || y > ymax + 80) { started = false; continue; }
+    const px = sx(x), py = sy(y);
+    if (!started) { ctx.moveTo(px, py); started = true; } else ctx.lineTo(px, py);
+  }
+  ctx.stroke();
+}
+
+function vline(ctx, sx, sy, x, W, H, pad) {
+  ctx.strokeStyle = '#f7816666'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(sx(x), pad); ctx.lineTo(sx(x), H - pad); ctx.stroke(); ctx.setLineDash([]);
+}
+function hline(ctx, sx, sy, y, W, H, pad) {
+  ctx.strokeStyle = '#f7816666'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]);
+  ctx.beginPath(); ctx.moveTo(pad, sy(y)); ctx.lineTo(W - pad, sy(y)); ctx.stroke(); ctx.setLineDash([]);
+}
+function dot(ctx, sx, sy, x, y, color, label) {
+  ctx.fillStyle = color || '#e3b341'; ctx.beginPath(); ctx.arc(sx(x), sy(y), 5, 0, 2 * Math.PI); ctx.fill();
+  if (label) { ctx.fillStyle = '#c9d1d9'; ctx.font = '11px Inter,sans-serif'; ctx.textAlign = 'left'; ctx.fillText(label, sx(x) + 7, sy(y) - 4); }
+}
+
+// ─── CONTOUR PLOT ──────────────────────────────────────────────────
+function contour(id, fn, xmin, xmax, ymin, ymax, pts) {
+  const cv = document.getElementById(id); if (!cv) return;
+  const ctx = cv.getContext('2d'); const W = cv.width, H = cv.height, pad = 24;
+  const sx = x => pad + (x - xmin) / (xmax - xmin) * (W - 2 * pad);
+  const sy = y => H - pad - (y - ymin) / (ymax - ymin) * (H - 2 * pad);
+  const N = 60; let zmin = Infinity, zmax = -Infinity;
+  const vals = [];
+  for (let i = 0; i <= N; i++) {
+    vals.push([]);
+    for (let j = 0; j <= N; j++) {
+      const x = xmin + i / N * (xmax - xmin), y_v = ymin + j / N * (ymax - ymin);
+      const z = fn(x, y_v); vals[i].push(z);
+      if (isFinite(z)) { zmin = Math.min(zmin, z); zmax = Math.max(zmax, z); }
+    }
+  }
+  const cW = (W - 2 * pad) / N, cH = (H - 2 * pad) / N;
+  for (let i = 0; i < N; i++) for (let j = 0; j < N; j++) {
+    const z = vals[i][j]; if (!isFinite(z)) continue;
+    const t = (z - zmin) / (zmax - zmin);
+    const r = Math.round(8 + t * 50), g2 = Math.round(20 + t * 90), b = Math.round(50 + t * 90);
+    ctx.fillStyle = `rgb(${r},${g2},${b})`;
+    ctx.fillRect(pad + i * cW, pad + (N - 1 - j) * cH, cW + 1, cH + 1);
+  }
+  // axes
+  ctx.strokeStyle = '#30363d'; ctx.lineWidth = 1;
+  if (xmin < 0 && xmax > 0) { ctx.beginPath(); ctx.moveTo(sx(0), pad); ctx.lineTo(sx(0), H - pad); ctx.stroke(); }
+  if (ymin < 0 && ymax > 0) { ctx.beginPath(); ctx.moveTo(pad, sy(0)); ctx.lineTo(W - pad, sy(0)); ctx.stroke(); }
+  // critical points
+  const cols = { min: '#3fb950', max: '#f85149', saddle: '#ffa657' };
+  if (pts) pts.forEach(([x, y, t]) => {
+    const c = cols[t] || '#58a6ff';
+    ctx.fillStyle = c; ctx.beginPath(); ctx.arc(sx(x), sy(y), 7, 0, 2 * Math.PI); ctx.fill();
+    ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(sx(x), sy(y), 7, 0, 2 * Math.PI); ctx.stroke();
+    ctx.fillStyle = '#e6edf3'; ctx.font = '10px Inter,sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText(t, sx(x) + 10, sy(y) + 4);
+  });
+}
+
+// ─── GRAPH DEFINITIONS ─────────────────────────────────────────────
+function initGraphs() {
   // Log/Exp
-  const c=document.getElementById('graph-logexp');
-  if(c){const ctx=c.getContext('2d');const{sx,sy,pad}=axes(ctx,c.width,c.height,-0.5,4,-2.5,3);
-    plot(ctx,x=>Math.log(x),0.01,4,-2.5,3,sx,sy,'#58a6ff');
-    plot(ctx,x=>Math.exp(x),-0.5,1.1,-2.5,3,sx,sy,'#3fb950');
-    plot(ctx,x=>x,-0.5,3,-2.5,3,sx,sy,'#484f5888',1.5);
-    ctx.fillStyle='#58a6ff';ctx.font='12px Inter,sans-serif';ctx.textAlign='left';ctx.fillText('y = ln x',sx(2.2),sy(0.75));
-    ctx.fillStyle='#3fb950';ctx.fillText('y = eˣ',sx(0.6),sy(2.0));
-    ctx.fillStyle='#484f58';ctx.fillText('y = x',sx(2.3),sy(2.6));
+  const c = document.getElementById('graph-logexp');
+  if (c) {
+    const ctx = c.getContext('2d');
+    const { sx, sy, pad } = axes(ctx, c.width, c.height, -0.5, 4, -2.5, 3);
+    plot(ctx, x => Math.log(x), 0.01, 4, -2.5, 3, sx, sy, '#58a6ff');
+    plot(ctx, x => Math.exp(x), -0.5, 1.1, -2.5, 3, sx, sy, '#3fb950');
+    plot(ctx, x => x, -0.5, 3, -2.5, 3, sx, sy, '#484f58', 1);
+    ctx.fillStyle = '#58a6ff'; ctx.font = 'bold 12px Inter,sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('y = ln x', sx(2.2), sy(0.7));
+    ctx.fillStyle = '#3fb950'; ctx.fillText('y = eˣ', sx(0.5), sy(1.9));
   }
   // Sign chart
-  const c2=document.getElementById('graph-signchart');
-  if(c2){const ctx=c2.getContext('2d');const{sx,sy,pad}=axes(ctx,c2.width,c2.height,-2.5,2.5,-3,3);
-    plot(ctx,x=>x*x*x-x,-2.2,2.2,-3,3,sx,sy,'#58a6ff');
-    [[-1,0],[0,0],[1,0]].forEach(([x,y])=>dot(ctx,sx,sy,x,y,'#e3b341',`x=${x}`));
-    ctx.fillStyle='#c9d1d9';ctx.font='12px Inter,sans-serif';ctx.textAlign='center';
-    ctx.fillText('f(x) = x³ − x',c2.width/2,pad-10);
+  const c2 = document.getElementById('graph-signchart');
+  if (c2) {
+    const ctx = c2.getContext('2d');
+    const { sx, sy, pad } = axes(ctx, c2.width, c2.height, -2.2, 2.2, -3, 3);
+    // shade positive regions
+    ctx.fillStyle = 'rgba(63,185,80,.12)';
+    const shade = (x1, x2) => {
+      ctx.beginPath();
+      let s = true;
+      for (let i = 0; i <= 200; i++) {
+        const x = x1 + i/200*(x2-x1), y = x*x*x - x;
+        if (y >= -3 && y <= 3) { if(s){ctx.moveTo(sx(x),sy(0));s=false;} ctx.lineTo(sx(x),sy(y)); }
+      }
+      ctx.lineTo(sx(x2), sy(0)); ctx.closePath(); ctx.fill();
+    };
+    shade(-1, 0); shade(1, 2.2);
+    plot(ctx, x => x*x*x - x, -2.2, 2.2, -3, 3, sx, sy, '#58a6ff');
+    [[-1,0,'#e3b341'],[0,0,'#e3b341'],[1,0,'#e3b341']].forEach(([x,y,col]) => dot(ctx,sx,sy,x,y,col));
   }
+
   // Exercise A graphs
-  const fns={
-    'jan2025':{fn:x=>(5*x*x-2*x)/Math.exp(x),xmin:-1.5,xmax:8,ymin:-1,ymax:4},
-    'mar2025':{fn:x=>Math.pow(x,4)-2*Math.pow(x,3)+1,xmin:-1,xmax:2.5,ymin:-1,ymax:3},
-    'nov2025':{fn:x=>(x>2&&x<4)?Math.log((4-x)/(x-2)):NaN,xmin:1,xmax:5,ymin:-4,ymax:4,va:[2,4]},
-    'dec2025':{fn:x=>Math.pow(x,5)-Math.pow(x,3),xmin:-1.6,xmax:1.6,ymin:-0.5,ymax:0.5},
-    'jan2026':{fn:x=>(Math.abs(x)!==1)?1/(1-x*x):NaN,xmin:-2.5,xmax:2.5,ymin:-5,ymax:5,va:[-1,1],ha:0},
-    'mar2025_2':{fn:x=>Math.pow(x,4)-2*Math.pow(x,3)+1,xmin:-1,xmax:2.5,ymin:-1,ymax:3},
-    'may2026':{fn:x=>(x!==1&&x!==-1)?x/(x*x-1):NaN,xmin:-4,xmax:4,ymin:-4,ymax:4,va:[-1,1],ha:0},
+  const fns = {
+    'jan2025': { fn: x => (5*x*x-2*x)/Math.exp(x), xr:[-1.5,8], yr:[-0.5,4] },
+    'mar2025': { fn: x => Math.pow(x,4)-2*Math.pow(x,3)+1, xr:[-0.8,2.5], yr:[-0.8,3] },
+    'nov2025': { fn: x => Math.log((4-x)/(x-2)), xr:[1,5], yr:[-4,4], vas:[2,4] },
+    'dec2025': { fn: x => Math.pow(x,5)-Math.pow(x,3), xr:[-1.6,1.6], yr:[-0.6,0.6] },
+    'jan2026': { fn: x => 1/(1-x*x), xr:[-2.5,2.5], yr:[-5,5], vas:[-1,1], ha:0 },
+    'may2026': { fn: x => x/(x*x-1), xr:[-4,4], yr:[-4,4], vas:[-1,1], ha:0 },
   };
-  Object.entries(fns).forEach(([key,cfg])=>{
-    const cv=document.getElementById('graph-'+key);if(!cv)return;
-    const ctx=cv.getContext('2d');const{sx,sy,pad}=axes(ctx,cv.width,cv.height,cfg.xmin,cfg.xmax,cfg.ymin,cfg.ymax);
-    if(cfg.va)cfg.va.forEach(x=>vline(ctx,sx,sy,x,cv.width,cv.height,pad));
-    if(cfg.ha!==undefined)hline(ctx,sx,sy,cfg.ha,cv.width,cv.height,pad);
-    // plot in segments around asymptotes
-    if(cfg.va&&cfg.va.length>=2){
-      plot(ctx,cfg.fn,cfg.xmin,cfg.va[0]-0.001,cfg.ymin,cfg.ymax,sx,sy,'#58a6ff');
-      plot(ctx,cfg.fn,cfg.va[0]+0.001,cfg.va[1]-0.001,cfg.ymin,cfg.ymax,sx,sy,'#58a6ff');
-      plot(ctx,cfg.fn,cfg.va[1]+0.001,cfg.xmax,cfg.ymin,cfg.ymax,sx,sy,'#58a6ff');
-    } else if(cfg.va&&cfg.va.length===1){
-      plot(ctx,cfg.fn,cfg.xmin,cfg.va[0]-0.001,cfg.ymin,cfg.ymax,sx,sy,'#58a6ff');
-      plot(ctx,cfg.fn,cfg.va[0]+0.001,cfg.xmax,cfg.ymin,cfg.ymax,sx,sy,'#58a6ff');
+
+  Object.entries(fns).forEach(([key, cfg]) => {
+    const cv = document.getElementById('graph-' + key); if (!cv) return;
+    const ctx = cv.getContext('2d');
+    const [xmin,xmax] = cfg.xr, [ymin,ymax] = cfg.yr;
+    const { sx, sy, pad } = axes(ctx, cv.width, cv.height, xmin, xmax, ymin, ymax);
+    if (cfg.has !== undefined) hline(ctx, sx, sy, cfg.ha, cv.width, cv.height, pad);
+    if (cfg.vas) cfg.vas.forEach(v => vline(ctx, sx, sy, v, cv.width, cv.height, pad));
+    // plot in segments
+    if (cfg.vas && cfg.vas.length >= 2) {
+      const [v1, v2] = cfg.vas;
+      plot(ctx, cfg.fn, xmin, v1-0.01, ymin, ymax, sx, sy, '#58a6ff');
+      plot(ctx, cfg.fn, v1+0.01, v2-0.01, ymin, ymax, sx, sy, '#58a6ff');
+      plot(ctx, cfg.fn, v2+0.01, xmax, ymin, ymax, sx, sy, '#58a6ff');
+    } else if (cfg.vas && cfg.vas.length === 1) {
+      const [v1] = cfg.vas;
+      plot(ctx, cfg.fn, xmin, v1-0.01, ymin, ymax, sx, sy, '#58a6ff');
+      plot(ctx, cfg.fn, v1+0.01, xmax, ymin, ymax, sx, sy, '#58a6ff');
     } else {
-      plot(ctx,cfg.fn,cfg.xmin,cfg.xmax,cfg.ymin,cfg.ymax,sx,sy,'#58a6ff');
+      plot(ctx, cfg.fn, xmin, xmax, ymin, ymax, sx, sy, '#58a6ff');
     }
   });
 
-  // Contour graphs
-  function contour(canvasId,fn,xmin,xmax,ymin,ymax,pts){
-    const cv=document.getElementById(canvasId);if(!cv)return;
-    const ctx=cv.getContext('2d');const W=cv.width,H=cv.height;const pad=28;
-    const sx=x=>pad+(x-xmin)/(xmax-xmin)*(W-2*pad);
-    const sy=y=>H-pad-(y-ymin)/(ymax-ymin)*(H-2*pad);
-    const N=50;let zmin=Infinity,zmax=-Infinity;
-    const vals=[];
-    for(let i=0;i<=N;i++){vals.push([]);for(let j=0;j<=N;j++){
-      const x=xmin+i/N*(xmax-xmin),y=ymin+j/N*(ymax-ymin);
-      const z=fn(x,y);vals[i].push(z);
-      if(isFinite(z)){zmin=Math.min(zmin,z);zmax=Math.max(zmax,z);}
-    }}
-    const cW=(W-2*pad)/N,cH=(H-2*pad)/N;
-    for(let i=0;i<N;i++)for(let j=0;j<N;j++){
-      const z=vals[i][j];if(!isFinite(z))continue;
-      const t=(z-zmin)/(zmax-zmin);
-      const r=Math.round(15+t*60),g=Math.round(30+t*110),b=Math.round(60+t*100);
-      ctx.fillStyle=`rgb(${r},${g},${b})`;
-      ctx.fillRect(pad+i*cW,pad+j*cH,cW+1,cH+1);
-    }
-    ctx.strokeStyle='#484f5888';ctx.lineWidth=1;
-    if(xmin<0&&xmax>0){ctx.beginPath();ctx.moveTo(sx(0),pad);ctx.lineTo(sx(0),H-pad);ctx.stroke();}
-    if(ymin<0&&ymax>0){ctx.beginPath();ctx.moveTo(pad,sy(0));ctx.lineTo(W-pad,sy(0));ctx.stroke();}
-    const cols={min:'#3fb950',max:'#f85149',saddle:'#ffa657'};
-    if(pts)pts.forEach(([x,y,t])=>{
-      ctx.fillStyle=cols[t]||'#58a6ff';ctx.beginPath();ctx.arc(sx(x),sy(y),6,0,2*Math.PI);ctx.fill();
-      ctx.strokeStyle='#0d1117';ctx.lineWidth=2;ctx.beginPath();ctx.arc(sx(x),sy(y),6,0,2*Math.PI);ctx.stroke();
+  // Contour plots
+  contour('contour-jan2025', (x,y) => x*x*x-3*x+y*y*y-3*y, -2.5,2.5,-2.5,2.5,
+    [[-1,-1,'min'],[1,1,'min'],[-1,1,'saddle'],[1,-1,'saddle']]);
+  contour('contour-dec2025', (x,y) => Math.log10(x*x+y*y+1), -2.5,2.5,-2.5,2.5, [[0,0,'min']]);
+  contour('contour-jan2026', (x,y) => Math.exp(x*x+y*y+1), -2.5,2.5,-2.5,2.5, [[0,0,'min']]);
+  contour('contour-mar2026', (x,y) => (x*x+y*y<0.99)?Math.log10(1-x*x-y*y):NaN, -1.1,1.1,-1.1,1.1, [[0,0,'max']]);
+  contour('contour-may2026', (x,y) => x*x+y*y-2*x-4*y, -1,4,-1,6, [[1,2,'min']]);
+  contour('contour-may2025', (x,y) => x*x*x/3+y*y*y/3-x*x-y*y-3*x*y+2, -2,7,-2,7,
+    [[0,0,'saddle'],[5,5,'min']]);
+}
+
+// ─── INIT ──────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Typeset only the active page
+  const activePg = document.querySelector('.page.active');
+  if (window.MathJax && activePg) {
+    MathJax.startup.promise.then(() => {
+      MathJax.typesetPromise([activePg]).then(() => initGraphs());
     });
-    const leg=[['#3fb950','min'],['#f85149','max'],['#ffa657','saddle']];
-    leg.forEach(([c,l],i)=>{ctx.fillStyle=c;ctx.beginPath();ctx.arc(pad+i*66+8,H-10,4,0,2*Math.PI);ctx.fill();
-      ctx.fillStyle='#8b949e';ctx.font='10px Inter,sans-serif';ctx.textAlign='left';ctx.fillText(l,pad+i*66+16,H-7);});
+  } else {
+    setTimeout(initGraphs, 400);
   }
-  contour('contour-jan2025',(x,y)=>x*x*x-3*x+y*y*y-3*y,-2.5,2.5,-2.5,2.5,[[-1,-1,'min'],[1,1,'min'],[-1,1,'saddle'],[1,-1,'saddle']]);
-  contour('contour-dec2025',(x,y)=>Math.log10(x*x+y*y+1),-2.5,2.5,-2.5,2.5,[[0,0,'min']]);
-  contour('contour-jan2026',(x,y)=>Math.exp(x*x+y*y+1),-2.5,2.5,-2.5,2.5,[[0,0,'min']]);
-  contour('contour-may2026',(x,y)=>x*x+y*y-2*x-4*y,-0.5,3.5,-0.5,5.5,[[1,2,'min']]);
-}
-window.addEventListener('load',()=>setTimeout(initGraphs,200));
+});
 
+function drawGraphsForPage(id) {
+  // Re-draw graphs when switching pages
+  setTimeout(initGraphs, 100);
+}
 </script>
-<script>
-
-function showPage(id,btn){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelectorAll('.sl').forEach(s=>s.classList.remove('active'));
-  const pg=document.getElementById('page-'+id);
-  if(pg)pg.classList.add('active');
-  if(btn)btn.classList.add('active');
-  document.querySelector('.sl[onclick*=\''+id+'\']')?.classList.add('active');
-  window.scrollTo(0,0);
-  if(window.MathJax)MathJax.typesetPromise();
-}
-function tq(header){
-  const body=header.nextElementSibling;
-  const chev=header.querySelector('.chev');
-  body.classList.toggle('open');
-  chev.classList.toggle('open');
-}
-function tc(btn){
-  const content=btn.nextElementSibling;
-  const arrow=btn.querySelector('span');
-  content.classList.toggle('open');
-  if(content.classList.contains('open')){
-    arrow.textContent='▲';
-    if(window.MathJax)MathJax.typesetPromise();
-    setTimeout(initGraphs,100);
-  } else {arrow.textContent='▼';}
-}
-
-</script>
-</body></html>
+</body>
+</html>
